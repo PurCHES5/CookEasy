@@ -57,9 +57,6 @@
     <PackageReference Include="Xamarin.Android.Support.Core.Utils">
       <Version>28.0.0.3</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.v4">
-      <Version>28.0.0.3</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.7.1</Version>
     </PackageReference>
@@ -67,9 +64,6 @@
       <Version>121.0.1.4</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
-    <PackageReference Include="Xamarin.Google.Android.Material">
-      <Version>1.4.0.6</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Auth">
       <Version>119.2.0.3</Version>
     </PackageReference>
@@ -108,6 +102,18 @@
       <Project>{1C648169-94B2-4614-B863-894BD73752A6}</Project>
       <Name>CookEasy</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_account_circle_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_account_circle_24px_un.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_home_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_home_24px_un.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

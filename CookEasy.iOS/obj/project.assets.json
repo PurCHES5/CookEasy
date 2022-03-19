@@ -2,6 +2,28 @@
   "version": 3,
   "targets": {
     "Xamarin.iOS,Version=v1.0": {
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -155,8 +177,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -167,6 +190,28 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -320,8 +365,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -332,6 +378,28 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -485,8 +553,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -497,6 +566,28 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/RedCorners.Forms.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -650,8 +741,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -663,6 +755,36 @@
     }
   },
   "libraries": {
+    "RedCorners/8.0.0": {
+      "sha512": "LQYAi3nAI8xK596pd24mdoBra30nSQUI7Fj7SM9Xy1nEqH3LEW6xvzEasdJG/EwXUh9Bz7GjXkWNZhxlOZPDmg==",
+      "type": "package",
+      "path": "redcorners/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.0/RedCorners.dll",
+        "redcorners.8.0.0.nupkg.sha512",
+        "redcorners.nuspec",
+        "redcorners_logo.png"
+      ]
+    },
+    "RedCorners.Forms/63.2.0": {
+      "sha512": "OVjXRe1Hb40XE9M6zq0jFqJ6YEpNfifKiZlXdSAbMyXlRWiDG4H3xqYMF6RD+IHagVAEgTv9mbwucCszphpqxw==",
+      "type": "package",
+      "path": "redcorners.forms/63.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid100/RedCorners.Forms.dll",
+        "lib/Xamarin.iOS10/RedCorners.Forms.dll",
+        "lib/netstandard2.0/RedCorners.Forms.dll",
+        "license.txt",
+        "redcorners.forms.63.2.0.nupkg.sha512",
+        "redcorners.forms.nuspec",
+        "redcorners_forms_logo3.png"
+      ]
+    },
     "System.Numerics.Vectors/4.5.0": {
       "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "type": "package",
@@ -1057,5 +1179,33 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Essentials from 1.7.1 to 1.6.1. Reference the package directly from the project to select a different version. \r\n CookEasy.iOS -> CookEasy -> Xamarin.Essentials (>= 1.7.1) \r\n CookEasy.iOS -> Xamarin.Essentials (>= 1.6.1)",
+      "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 5.0.0.2337 to 5.0.0.2012. Reference the package directly from the project to select a different version. \r\n CookEasy.iOS -> CookEasy -> Xamarin.Forms (>= 5.0.0.2337) \r\n CookEasy.iOS -> Xamarin.Forms (>= 5.0.0.2012)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
 }

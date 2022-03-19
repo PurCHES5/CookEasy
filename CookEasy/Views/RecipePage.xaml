@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rf:ContentPage2 xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:rf="clr-namespace:RedCorners.Forms;assembly=RedCorners.Forms"
+    xmlns:vm="clr-namespace:CookEasy.ViewModels"
+    xmlns:views="clr-namespace:CookEasy.Views"
+    FixBottomPadding="False"
+    FixTopPadding="False"
+    x:Class="CookEasy.Views.RecipePage">
+    <StackLayout Padding="20,20,20,20" Spacing="15">
+        <Label Text="This is a recipe! 刘灏是傻逼!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   FontSize="Large"
+                   TextColor="Black"
+                   x:Name="Title"/>
+        <Button Text="没错!" CornerRadius="20">
+            <Button.Command>
+                <rf:PageCommand PageType="{Type views:HomePage}" />
+            </Button.Command>
+        </Button>
+    </StackLayout>
+</rf:ContentPage2>

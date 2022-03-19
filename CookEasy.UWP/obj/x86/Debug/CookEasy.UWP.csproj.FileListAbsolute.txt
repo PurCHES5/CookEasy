@@ -61,3 +61,5 @@ C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\obj\x86\Debug\MultipleQualifie
 C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_636160715180000000.json
 C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424527200000000.json
+C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\bin\x86\Debug\RedCorners.dll
+C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\bin\x86\Debug\RedCorners.Forms.dll

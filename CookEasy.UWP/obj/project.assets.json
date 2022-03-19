@@ -230,6 +230,28 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        }
+      },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -378,8 +400,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -617,6 +640,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
@@ -934,8 +979,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -1173,6 +1219,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.2.12": {
@@ -1491,8 +1559,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -1730,6 +1799,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
@@ -2045,8 +2136,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -2284,6 +2376,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
@@ -2601,8 +2715,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -2840,6 +2955,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
@@ -3158,8 +3295,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -3397,6 +3535,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
@@ -3714,8 +3874,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -3953,6 +4114,28 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "RedCorners/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.dll": {}
+        }
+      },
+      "RedCorners.Forms/63.2.0": {
+        "type": "package",
+        "dependencies": {
+          "RedCorners": "8.0.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RedCorners.Forms.dll": {}
         }
       },
       "runtime.win10-arm.Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
@@ -4271,8 +4454,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Essentials": "1.6.1",
-          "Xamarin.Forms": "5.0.0.2012"
+          "RedCorners.Forms": "63.2.0",
+          "Xamarin.Essentials": "1.7.1",
+          "Xamarin.Forms": "5.0.0.2337"
         },
         "compile": {
           "bin/placeholder/CookEasy.dll": {}
@@ -4823,6 +5007,36 @@
         "lib/netstandard1.0/_._",
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
+      ]
+    },
+    "RedCorners/8.0.0": {
+      "sha512": "LQYAi3nAI8xK596pd24mdoBra30nSQUI7Fj7SM9Xy1nEqH3LEW6xvzEasdJG/EwXUh9Bz7GjXkWNZhxlOZPDmg==",
+      "type": "package",
+      "path": "redcorners/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.0/RedCorners.dll",
+        "redcorners.8.0.0.nupkg.sha512",
+        "redcorners.nuspec",
+        "redcorners_logo.png"
+      ]
+    },
+    "RedCorners.Forms/63.2.0": {
+      "sha512": "OVjXRe1Hb40XE9M6zq0jFqJ6YEpNfifKiZlXdSAbMyXlRWiDG4H3xqYMF6RD+IHagVAEgTv9mbwucCszphpqxw==",
+      "type": "package",
+      "path": "redcorners.forms/63.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid100/RedCorners.Forms.dll",
+        "lib/Xamarin.iOS10/RedCorners.Forms.dll",
+        "lib/netstandard2.0/RedCorners.Forms.dll",
+        "license.txt",
+        "redcorners.forms.63.2.0.nupkg.sha512",
+        "redcorners.forms.nuspec",
+        "redcorners_forms_logo3.png"
       ]
     },
     "runtime.win10-arm-aot.Microsoft.NETCore.UniversalWindowsPlatform/6.2.12": {
@@ -9142,5 +9356,41 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Essentials from 1.7.1 to 1.6.1. Reference the package directly from the project to select a different version. \r\n CookEasy.UWP -> CookEasy -> Xamarin.Essentials (>= 1.7.1) \r\n CookEasy.UWP -> Xamarin.Essentials (>= 1.6.1)",
+      "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "UAP,Version=v10.0.16299",
+        "UAP,Version=v10.0.16299/win10-arm",
+        "UAP,Version=v10.0.16299/win10-arm-aot",
+        "UAP,Version=v10.0.16299/win10-arm64-aot",
+        "UAP,Version=v10.0.16299/win10-x64",
+        "UAP,Version=v10.0.16299/win10-x64-aot",
+        "UAP,Version=v10.0.16299/win10-x86",
+        "UAP,Version=v10.0.16299/win10-x86-aot"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 5.0.0.2337 to 5.0.0.2012. Reference the package directly from the project to select a different version. \r\n CookEasy.UWP -> CookEasy -> Xamarin.Forms (>= 5.0.0.2337) \r\n CookEasy.UWP -> Xamarin.Forms (>= 5.0.0.2012)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "UAP,Version=v10.0.16299",
+        "UAP,Version=v10.0.16299/win10-arm",
+        "UAP,Version=v10.0.16299/win10-arm-aot",
+        "UAP,Version=v10.0.16299/win10-arm64-aot",
+        "UAP,Version=v10.0.16299/win10-x64",
+        "UAP,Version=v10.0.16299/win10-x64-aot",
+        "UAP,Version=v10.0.16299/win10-x86",
+        "UAP,Version=v10.0.16299/win10-x86-aot"
+      ]
+    }
+  ]
 }

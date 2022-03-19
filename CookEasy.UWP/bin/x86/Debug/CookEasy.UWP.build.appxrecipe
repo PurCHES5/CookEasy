@@ -28,6 +28,12 @@
     <AppxPackagedFile Include="C:\Users\cesta\Desktop\GGEZ\CookEasy\CookEasy.UWP\bin\x86\Debug\CookEasy.UWP.exe">
       <PackagePath>entrypoint\CookEasy.UWP.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\cesta\.nuget\packages\redcorners\8.0.0\lib\netstandard2.0\RedCorners.dll">
+      <PackagePath>RedCorners.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\cesta\.nuget\packages\redcorners.forms\63.2.0\lib\netstandard2.0\RedCorners.Forms.dll">
+      <PackagePath>RedCorners.Forms.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\cesta\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
     </AppxPackagedFile>
