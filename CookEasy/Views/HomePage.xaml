@@ -35,7 +35,7 @@
         SelectedIndex="0"
         TextColor="#b1b1b1"
         TabBarPadding="0,8,0,8"
-        TransitionDuration="250.0"
+        TransitionDuration="200.0"
         IsTabBarVisible="True"
         TabBarPosition="Bottom"
         ItemOrientation="Up"
@@ -48,7 +48,7 @@
             </Grid>
         </rf:TabGroup.TabBarBackground>
 
-        <rf:TitledGroup Icon="ic_home_24px_un" SelectedIcon="ic_home_24px" BackgroundColor="#F1F1F1" HasButton="False" Title="Home" TitleHeightRequest="0" FixTitlePadding="False" HasShadow="False">
+        <rf:ContentView2 Icon="ic_home_24px_un" SelectedIcon="ic_home_24px" BackgroundColor="#F1F1F1" Title="Home">
             <Grid>
                 <StackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Text="CookEasy" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
@@ -62,7 +62,7 @@
                     </Button>
                 </StackLayout>
             </Grid>
-        </rf:TitledGroup>
+        </rf:ContentView2>
 
         <rf:TitledGroup Icon="ic_account_circle_24px_un" SelectedIcon="ic_account_circle_24px" Title="Me" BackgroundColor="#F1F1F1" HasButton="False">
             <rf:TitledGroup.TitleBackgroundView>
@@ -73,6 +73,13 @@
                     Aspect="AspectFill"
                     HeightRequest="1" />
             </rf:TitledGroup.TitleBackgroundView>
+            <rf:TitledGroup.TitleView>
+                <Button Text="Recipe" CornerRadius="30" BackgroundColor="#FF9C54" TextColor="White">
+                    <Button.Command>
+                        <rf:PageCommand PageType="{Type views:RecipePage}" />
+                    </Button.Command>
+                </Button>
+            </rf:TitledGroup.TitleView>
             <Grid>
                 <StackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Text="Me Page" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />

@@ -16,7 +16,7 @@
                    x:Name="Title"/>
         <Button Text="没错!" CornerRadius="20">
             <Button.Command>
-                <rf:PageCommand PageType="{Type views:HomePage}" />
+                <rf:PageCommand PageType="{Type views:HomePage}"/>
             </Button.Command>
         </Button>
     </StackLayout>
