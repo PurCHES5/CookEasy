@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CookEasy.Views.NavPage"
+            xmlns:local="clr-namespace:CookEasy.Views"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="White"
+            SelectedTabColor="#ff9c54"
+            UnselectedTabColor="#b1b1b1">
+  <!--Pages can be added as references or inline-->
+    <local:HomePage IconImageSource="ic_home_24px" Title="Home"/>
+    <local:CreateRecipeMiddlePage IconImageSource="ic_new_button" Title="Create Recipe"/>
+    <ContentPage IconImageSource="ic_account_circle_24px" Title="Me"/>
+</TabbedPage>

@@ -10,11 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace CookEasy.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecipePage
+    public partial class NavPage : TabbedPage
     {
-        public RecipePage()
+        public NavPage()
         {
             InitializeComponent();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
         }
     }
 }

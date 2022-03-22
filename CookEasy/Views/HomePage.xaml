@@ -1,93 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<rf:ContentPage2 xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:rf="clr-namespace:RedCorners.Forms;assembly=RedCorners.Forms"
     xmlns:vm="clr-namespace:CookEasy.ViewModels"
     xmlns:views="clr-namespace:CookEasy.Views"
-    FixBottomPadding="False"
-    FixTopPadding="False"
-    x:Class="CookEasy.Views.HomePage">
-    <rf:ContentPage2.Resources>
-        <ResourceDictionary>
-            <Style TargetType="rf:TitledGroup">
-                <Setter Property="IsBackButtonVisible" Value="False" />
-            </Style>
-            <Style TargetType="rf:TabBar" x:Key="ChoiceStyle">
-                <Setter Property="HorizontalTextAlignment" Value="Start" />
-                <Setter Property="ImageButtonStyle" Value="Text" />
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="SelectedTextColor" Value="#1e88e5" />
-                <Setter Property="Orientation" Value="Vertical" />
-                <Setter Property="Margin" Value="16,0,0,0" />
-            </Style>
-        </ResourceDictionary>
-    </rf:ContentPage2.Resources>
+    x:Class="CookEasy.Views.HomePage"
+    x:DataType="vm:HomePageViewModel">
 
-    <rf:ContentPage2.BindingContext>
-        <vm:TabBarViewModel x:Name="viewModel" />
-    </rf:ContentPage2.BindingContext>
-
-    <rf:TabGroup
-        SelectedTextColor="#ff9c54"
-        TabStyle="ImageText"
-        TabBarBackgroundColor="#FFFFFF"
-        TabBarSizeRequest="60.0"
-        SelectedIndex="0"
-        TextColor="#b1b1b1"
-        TabBarPadding="0,8,0,8"
-        TransitionDuration="200.0"
-        IsTabBarVisible="True"
-        TabBarPosition="Bottom"
-        ItemOrientation="Up"
-        Transition="Slide"
-        HasShadow="False"
-        >
-        <rf:TabGroup.TabBarBackground>
-            <Grid BackgroundColor="White">
-
-            </Grid>
-        </rf:TabGroup.TabBarBackground>
-
-        <rf:ContentView2 Icon="ic_home_24px_un" SelectedIcon="ic_home_24px" BackgroundColor="#F1F1F1" Title="Home">
-            <Grid>
-                <StackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Text="CookEasy" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <rf:HorizontalLine BackgroundColor="Black" />
-                    <Label Text="Welcome!" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <Label Text="TabGroup Demo" TextColor="#99000000" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <Button Text="Recipe" CornerRadius="30" BackgroundColor="#FF9C54" TextColor="White">
-                        <Button.Command>
-                            <rf:PageCommand PageType="{Type views:RecipePage}" />
-                        </Button.Command>
-                    </Button>
-                </StackLayout>
-            </Grid>
-        </rf:ContentView2>
-
-        <rf:TitledGroup Icon="ic_account_circle_24px_un" SelectedIcon="ic_account_circle_24px" Title="Me" BackgroundColor="#F1F1F1" HasButton="False">
-            <rf:TitledGroup.TitleBackgroundView>
-                <Image 
-                    Source="https://freefrontend.com/assets/img/css-background-patterns/simple-pattern-with-css3.png"
-                    HorizontalOptions="Fill"
-                    VerticalOptions="Fill"
-                    Aspect="AspectFill"
-                    HeightRequest="1" />
-            </rf:TitledGroup.TitleBackgroundView>
-            <rf:TitledGroup.TitleView>
-                <Button Text="Recipe" CornerRadius="30" BackgroundColor="#FF9C54" TextColor="White">
-                    <Button.Command>
-                        <rf:PageCommand PageType="{Type views:RecipePage}" />
-                    </Button.Command>
-                </Button>
-            </rf:TitledGroup.TitleView>
-            <Grid>
-                <StackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Text="Me Page" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <rf:HorizontalLine BackgroundColor="Black" />
-                    <Label Text="Settings" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                </StackLayout>
-            </Grid>
-        </rf:TitledGroup>
-    </rf:TabGroup>
-</rf:ContentPage2>
+    <StackLayout Padding="20,20,20,20" Spacing="15">
+        <Label Text="This is a recipe!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   FontSize="Large"
+                   TextColor="Black"
+                   x:Name="Title"/>
+        <Button Text="{Binding RecipeText}" CornerRadius="20" Command="{Binding GoToRecipe}"/>
+    </StackLayout>
+</ContentPage>

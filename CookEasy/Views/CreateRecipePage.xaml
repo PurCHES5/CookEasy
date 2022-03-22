@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CookEasy.Views.CreateRecipePage">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Spacing="10">
+            <Label Text="傻逼刘灏" TextColor="Black" FontSize="Medium" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <StackLayout Spacing="10" HorizontalOptions="Start" VerticalOptions="Start">
+                    <Label Text="Me Page" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                    <Label Text="Settings" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

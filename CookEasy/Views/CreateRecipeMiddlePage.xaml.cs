@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using CookEasy.ViewModels;
 
 namespace CookEasy.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : ContentPage
+    public partial class CreateRecipeMiddlePage : ContentPage
     {
-        public HomePage()
+        public CreateRecipeMiddlePage()
         {
             InitializeComponent();
-            BindingContext = new HomePageViewModel(Navigation);
+        }
+
+        protected override async void OnAppearing()
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new CreateRecipePage()) { BarBackgroundColor = Color.White });
         }
     }
 }

@@ -1,24 +1,29 @@
-﻿using CookEasy.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using RedCorners.Forms;
+using CookEasy.Views;
 
 namespace CookEasy
 {
-    public partial class App : Application2
+    public partial class App : Application
     {
-
-        public override void InitializeSystems()
+        public App()
         {
-            // Because we also have an App.xaml file
             InitializeComponent();
 
-            base.InitializeSystems();
+            MainPage = new NavPage();
         }
 
-        // Tell RedCorners.Forms what our first page should be
-        public override Page GetFirstPage() =>
-            new Views.HomePage();
+        protected override void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
     }
 }
