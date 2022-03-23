@@ -35,7 +35,7 @@ namespace CookEasy.ViewModels
 
         public async void OnGoToRecipe()
         {
-            await Navigation.PushModalAsync(new NavigationPage(new CreateRecipePage()) { BarBackgroundColor = Color.White });
+            await Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
         }
     }
 }
