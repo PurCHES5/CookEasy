@@ -11,12 +11,12 @@ using CookEasy.ViewModels;
 namespace CookEasy.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : ContentPage
+    public partial class SearchPage : ContentPage
     {
-        public HomePage()
+        public SearchPage()
         {
             InitializeComponent();
-            BindingContext = new HomePageViewModel(Navigation);
+            BindingContext = new SearchPageViewModel(Navigation);
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
@@ -34,13 +34,6 @@ namespace CookEasy.Views
                 titleBarShadow.BlurRadius = 5;
             }
 
-        }
-
-        private async void refreshView_Refreshing(object sender, EventArgs e)
-        {
-            await Task.Delay(3000);
-            // call vm
-            refreshView.IsRefreshing = false;
         }
     }
 }

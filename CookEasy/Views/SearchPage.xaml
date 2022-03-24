@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:CookEasy.ViewModels"
-    xmlns:views="clr-namespace:CookEasy.Views"
-    x:Class="CookEasy.Views.HomePage"
-    x:DataType="vm:HomePageViewModel"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CookEasy.ViewModels"
+             xmlns:views="clr-namespace:CookEasy.Views"
+             x:Class="CookEasy.Views.SearchPage"
+             x:DataType="vm:SearchPageViewModel"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
-    <Grid>
-        <RefreshView RefreshColor="#ff9c54" Refreshing="refreshView_Refreshing" x:Name="refreshView">
+    <ContentPage.Content>
+        <Grid>
             <ScrollView Scrolled="ScrollView_Scrolled">
                 <StackLayout Padding="20,20,20,20" Spacing="15" Margin="0,60,0,0">
-                    <Label Text="Recommendation"
+                    <Label Text="History"
                            VerticalOptions="CenterAndExpand" 
                            HorizontalOptions="CenterAndExpand"
                            FontSize="Large"
@@ -43,27 +43,26 @@
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                 </StackLayout>
             </ScrollView>
-        </RefreshView>
 
-        <yummy:PancakeView BackgroundColor="#F1F1F1" HeightRequest="60" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="5">
-            <yummy:PancakeView.Shadow>
-                <yummy:DropShadow BlurRadius="0" x:Name="titleBarShadow"/>
-            </yummy:PancakeView.Shadow>
-            <Grid>
-                <Button Text="Search for recipes..." 
-                        Command="{Binding GoToRecipe}" 
-                        CornerRadius="30" 
-                        HorizontalOptions="FillAndExpand" 
-                        VerticalOptions="Center" 
-                        HeightRequest="50" 
-                        Padding="-100,0,0,0" 
-                        BackgroundColor="White"
-                        TextColor="#B4B4B4" 
-                        TextTransform="None" 
-                        Margin="15,0" 
-                        FontSize="18"/>
-                <Image Source="ic_search_24px" HeightRequest="30" HorizontalOptions="Start" Margin="30,0,0,0"></Image>
-            </Grid>
-        </yummy:PancakeView>
-    </Grid>
+            <yummy:PancakeView BackgroundColor="#F1F1F1" HeightRequest="60" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="5">
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow BlurRadius="0" x:Name="titleBarShadow"/>
+                </yummy:PancakeView.Shadow>
+                <Grid>
+                    <yummy:PancakeView BackgroundColor="White"  
+                                       HeightRequest="50" 
+                                       CornerRadius="30"
+                                       Margin="15,0" 
+                                       HorizontalOptions="FillAndExpand" 
+                                       VerticalOptions="Center" >
+                        <SearchBar Placeholder="Search for recipes..."
+                                   x:Name="searchBar"
+                                   BackgroundColor="White"
+                                   SearchCommand="{Binding SearchRecipe}"
+                                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                    </yummy:PancakeView>
+                </Grid>
+            </yummy:PancakeView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

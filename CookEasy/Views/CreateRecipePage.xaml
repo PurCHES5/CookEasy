@@ -9,39 +9,35 @@
         </StackLayout>
     </NavigationPage.TitleView>
 
-    <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <StackLayout Spacing="10" HorizontalOptions="Start" VerticalOptions="Start">
-                    <Label Text="Me Page" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <Label Text="Settings" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                </StackLayout>
-            </Grid>
-        </ScrollView>
-    </ContentPage.Content>
+    <ScrollView>
+        <StackLayout Spacing="10" HorizontalOptions="Start" VerticalOptions="Start">
+            <Label Text="Me Page" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+            <Label Text="Settings" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

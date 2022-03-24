@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using CookEasy.Views;
+using System.Threading.Tasks;
 
 namespace CookEasy.ViewModels
 {
@@ -16,11 +17,9 @@ namespace CookEasy.ViewModels
         }
 
         public INavigation Navigation { get; set; }
-
         public ICommand GoToRecipe { get; }
 
         string recipeText = "Cake";
-
         public string RecipeText
         {
             get => recipeText;
@@ -33,9 +32,16 @@ namespace CookEasy.ViewModels
             }
         }
 
-        public async void OnGoToRecipe()
+        public bool isRefreshingPage;
+
+        async void OnGoToRecipe()
         {
-            await Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
+            await Navigation.PushModalAsync(new SearchPage());
+        }
+
+        public async void OnRefreshingPage()
+        {
+            // refresh page content, call this method from code behind
         }
     }
 }
