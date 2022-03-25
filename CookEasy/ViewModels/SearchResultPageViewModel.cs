@@ -8,27 +8,28 @@ using System.Threading.Tasks;
 
 namespace CookEasy.ViewModels
 {
-    public class SearchPageViewModel : BindableObject
+    public class SearchResultPageViewModel : BindableObject
     {
-        public SearchPageViewModel(INavigation navigation)
+        public SearchResultPageViewModel(INavigation navigation)
         {
             this.Navigation = navigation;
 
             BackButtonClick = new Command(OnBackButtonClicked);
+            GoToRecipe = new Command(OnGoToRecipe);
         }
 
         public INavigation Navigation { get; set; }
         public ICommand BackButtonClick { get; }
+        public ICommand GoToRecipe { get; }
 
-        public ICommand SearchRecipe => new Command<string>((string query) =>
+        async void OnBackButtonClicked()
         {
-            Console.WriteLine("query" + query);
-            Navigation.PushModalAsync(new SearchResultPage());
-        });
+            await Navigation.PushModalAsync(new SearchPage());
+        }
 
-        private void OnBackButtonClicked()
+        async void OnGoToRecipe()
         {
-            Navigation.PushModalAsync(new NavPage());
+            await Navigation.PushModalAsync(new SearchPage());
         }
     }
 }

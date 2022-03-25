@@ -11,12 +11,12 @@ using CookEasy.ViewModels;
 namespace CookEasy.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchPage : ContentPage
+    public partial class SearchResultPage : ContentPage
     {
-        public SearchPage()
+        public SearchResultPage()
         {
             InitializeComponent();
-            BindingContext = new SearchPageViewModel(Navigation);
+            BindingContext = new SearchResultPageViewModel(Navigation);
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
