@@ -11,7 +11,7 @@ namespace CookEasy
         {
             InitializeComponent();
 
-            MainPage = new NavPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

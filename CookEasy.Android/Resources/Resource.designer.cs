@@ -19274,9 +19274,10 @@ namespace CookEasy.Droid
 			public const int design_snackbar_background = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int googleg_disabled_color_18 = 2131165303;
+			public const int FacebookLogo = 2131165303;
 			
 			// aapt resource value: 0x7F070078
+<<<<<<< HEAD
 			public const int googleg_standard_color_18 = 2131165304;
 			
 			// aapt resource value: 0x7F070085
@@ -19284,11 +19285,15 @@ namespace CookEasy.Droid
 			
 			// aapt resource value: 0x7F070086
 			public const int icon_feed = 2131165318;
+=======
+			public const int googleg_disabled_color_18 = 2131165304;
+>>>>>>> c8f0c9877889fdc2403d69c5821664e4ad73ba54
 			
 			// aapt resource value: 0x7F070079
-			public const int ic_account_circle_24px = 2131165305;
+			public const int googleg_standard_color_18 = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
+<<<<<<< HEAD
 			public const int ic_arrow_back_24px = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
@@ -19326,6 +19331,51 @@ namespace CookEasy.Droid
 			
 			// aapt resource value: 0x7F070088
 			public const int logo = 2131165320;
+=======
+			public const int GoogleLogo = 2131165306;
+			
+			// aapt resource value: 0x7F070086
+			public const int icon_about = 2131165318;
+			
+			// aapt resource value: 0x7F070087
+			public const int icon_feed = 2131165319;
+			
+			// aapt resource value: 0x7F07007B
+			public const int ic_account_circle_24px = 2131165307;
+			
+			// aapt resource value: 0x7F07007C
+			public const int ic_arrow_down_24dp = 2131165308;
+			
+			// aapt resource value: 0x7F07007D
+			public const int ic_clock_black_24dp = 2131165309;
+			
+			// aapt resource value: 0x7F07007E
+			public const int ic_home_24px = 2131165310;
+			
+			// aapt resource value: 0x7F07007F
+			public const int ic_keyboard_black_24dp = 2131165311;
+			
+			// aapt resource value: 0x7F070080
+			public const int ic_mtrl_checked_circle = 2131165312;
+			
+			// aapt resource value: 0x7F070081
+			public const int ic_mtrl_chip_checked_black = 2131165313;
+			
+			// aapt resource value: 0x7F070082
+			public const int ic_mtrl_chip_checked_circle = 2131165314;
+			
+			// aapt resource value: 0x7F070083
+			public const int ic_mtrl_chip_close_circle = 2131165315;
+			
+			// aapt resource value: 0x7F070084
+			public const int ic_new_button = 2131165316;
+			
+			// aapt resource value: 0x7F070085
+			public const int ic_search_24px = 2131165317;
+			
+			// aapt resource value: 0x7F070088
+			public const int login_page_bg = 2131165320;
+>>>>>>> c8f0c9877889fdc2403d69c5821664e4ad73ba54
 			
 			// aapt resource value: 0x7F070089
 			public const int material_cursor_drawable = 2131165321;

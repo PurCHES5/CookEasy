@@ -1,85 +1,87 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="CookEasy.Views.LoginPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="#1B1B1B"
-    NavigationPage.HasNavigationBar="False"
-    BackgroundImageSource="login_page_bg.png">
+    xmlns:vm="clr-namespace:CookEasy.ViewModels"
+    xmlns:views="clr-namespace:CookEasy.Views"
+    x:Class="CookEasy.Views.LoginPage"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <StackLayout BackgroundColor="#e6e6e6">
+        <Grid>
+            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                <Frame HeightRequest="150" BackgroundColor="Black" Padding="0" Margin="0">
+                    <Image Source="login_page_bg" Aspect="AspectFill" Margin="0"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
+                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
 
-    <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Spacing="10">
-            <Label Text="傻逼刘灏" TextColor="Black" FontSize="Medium" />
-        </StackLayout>
-    </NavigationPage.TitleView>
+                    <StackLayout>
 
-    <Grid>
-    <AbsoluteLayout>
-        <Image Source="login_page_bg.png" Opacity="0.3"
-                VerticalOptions="FillAndExpand"/>
-    </AbsoluteLayout>
 
-    <StackLayout>
-        <Image
-            x:Name="Logo"
-            TranslationY="-60"
-            WidthRequest="80"
-            HeightRequest="80"
-            AbsoluteLayout.LayoutBounds="0,0,1,.4"
-            AbsoluteLayout.LayoutFlags="All"
-            BackgroundColor="White"
-            Source="logo"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand" />
-        <StackLayout
-            AbsoluteLayout.LayoutBounds="1,1,1,.6"
-            AbsoluteLayout.LayoutFlags="All"
-            Spacing="10">
-            <Frame CornerRadius="50" Margin="30,30,30,30">
-                <StackLayout Orientation="Horizontal">
-                    <Label
-                    Margin="30,30,0,0"
-                    FontSize="14"
-                    Text="Forgot Password?"
-                    TextColor="#0052FF"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="CenterAndExpand" >
-                    </Label>
-                    <Button
-                    x:Name="LoginButton"
-                    Margin="60,30,0,0"
-                    HeightRequest="80"
-                    WidthRequest="150"
-                    AbsoluteLayout.LayoutBounds="1,1,1,.2"
-                    BackgroundColor="#0052FF"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Text="Login"
-                    TextColor="White"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand" />
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-        <Label
-            Margin="20"
-            AbsoluteLayout.LayoutBounds="1,1,1,.1"
-            AbsoluteLayout.LayoutFlags="All"
-            FontSize="10"
-            TextColor="White"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="EndAndExpand">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="By signing up, you agree with our " />
-                    <Span
-                        Text="Terms and Conditions"
-                        TextColor="#0052FF"
-                        TextDecorations="Underline" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+                        <StackLayout Margin="10">
+                            <Label Text="Cook Easy" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                        </StackLayout>
+
+                        <StackLayout Padding="0" Margin="15,10">
+
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="https://www.findool.com/images/avatars/avatar.png" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry Placeholder="Username" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="https://images.all-free-download.com/images/graphicthumb/lock_icon_6813906.jpg" Aspect="AspectFill" Margin="0"/>
+                                    </Frame>
+
+                                    <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <StackLayout  Orientation="Horizontal">
+
+                                <Label Text="Forgot Password?" TextColor="Black" FontAttributes="Bold" HorizontalOptions="EndAndExpand" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+
+
+                            </StackLayout>
+
+                            <Button Text="LOG IN" BackgroundColor="Orange" TextColor="White" CornerRadius="30" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Text="Dont't have an account?" TextColor="DarkGray" FontSize="Small"/>
+                                <Label Text="Sign Up" TextColor="SkyBlue" FontAttributes="Bold" FontSize="Small"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,25,0,0" Padding="0">
+                                <Grid>
+                                    <BoxView BackgroundColor="DarkGray" HeightRequest="1" WidthRequest="150"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                        <Label Text="OR" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                    <Image Source="FacebookLogo.png" Aspect="AspectFill" Margin="0"/>
+                                </Frame>
+                                <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                    <Image Source="GoogleLogo.png" Aspect="AspectFill" Margin="0"/>
+                                </Frame>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+        </Grid>
     </StackLayout>
-    </Grid>
 </ContentPage>

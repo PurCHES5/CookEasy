@@ -117,6 +117,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_search_24px.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <AndroidResource Include="Resources\drawable-hdpi\ic_arrow_back_24px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,20 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\logo.png" />
+=======
+    <AndroidResource Include="Resources\drawable-hdpi\login_page_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\FacebookLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\GoogleLogo.png" />
+>>>>>>> c8f0c9877889fdc2403d69c5821664e4ad73ba54
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionCookEasyAndroidHideInfoBar="True" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
