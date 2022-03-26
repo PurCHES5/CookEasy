@@ -19,7 +19,7 @@
 
 
                         <StackLayout Margin="10">
-                            <Label Text="Cook Easy" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                            <Label Text="Cook Easy" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
                         </StackLayout>
 
                         <StackLayout Padding="0" Margin="15,10">
