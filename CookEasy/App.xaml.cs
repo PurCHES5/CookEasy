@@ -10,12 +10,8 @@ namespace CookEasy
         public App()
         {
             InitializeComponent();
-
-<<<<<<< Updated upstream
-            MainPage = new RegisterPage();
-=======
+            
             MainPage = new NavPage();
->>>>>>> Stashed changes
         }
 
         protected override void OnStart()
