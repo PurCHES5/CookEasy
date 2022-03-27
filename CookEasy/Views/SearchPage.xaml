@@ -17,30 +17,9 @@
                            FontSize="Large"
                            TextColor="Black"/>
                     <Label Text="123" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <yummy:PancakeView>
+                        
+                    </yummy:PancakeView>
                 </StackLayout>
             </ScrollView>
 
