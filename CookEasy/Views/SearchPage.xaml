@@ -16,7 +16,7 @@
                            HorizontalOptions="CenterAndExpand"
                            FontSize="Large"
                            TextColor="Black"/>
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Label Text="345" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
