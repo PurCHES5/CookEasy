@@ -19,52 +19,33 @@ namespace CookEasy.ViewModels
 
         public HomePageViewModel(INavigation navigation)
         {
-<<<<<<< HEAD
             this.Navigation = navigation;
 
             GoToRecipe = new Command(OnGoToRecipe);
             RefreshCommand = new AsyncCommand(Refresh);
 
             RecipeRecomms = new ObservableRangeCollection<RecipeProp>();
-=======
             GoToRecipe = new Command(OnGoToRecipe);
-<<<<<<< Updated upstream
-            this.Navigation = navigation;
-=======
             RefreshCommand = new AsyncCommand(Refresh);
             LoadMoreCommand = new Command(LoadMore);
 
             RecipeRecomms = new ObservableRangeCollection<RecipeProp>();
 
             LoadMore();
->>>>>>> Stashed changes
->>>>>>> merger
         }
 
         public INavigation Navigation { get; set; }
         public ICommand GoToRecipe { get; }
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> merger
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand<object> SelectedCommand { get; }
 
         public Command LoadMoreCommand { get; }
-<<<<<<< HEAD
-        public Command DelayLoadMoreCommand { get; }
-        public Command ClearCommand { get; }
-
-=======
         public Command ClearCommand { get; }
 
         public string[] cardColors = new string[9] {
             "#faced0", "#c74a6d", "#88697c", "#6da6bf", "#cee0f4", "#99c0c3", "#8cb173", "#cfce94", "#ffde99" };
 
->>>>>>> Stashed changes
->>>>>>> merger
         string recipeText = "Cake";
         public string RecipeText
         {
@@ -97,17 +78,6 @@ namespace CookEasy.ViewModels
 
         void LoadMore()
         {
-<<<<<<< HEAD
-            var image = "TestRecipeImage.jpeg";
-            RecipeRecomms.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image });
-            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image });
-            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image });
-            RecipeRecomms.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image });
-            RecipeRecomms.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image });
-=======
-<<<<<<< Updated upstream
-            // refresh page content, call this method from code behind
-=======
             if (RecipeRecomms.Count >= 8)
                 return;
 
@@ -122,8 +92,6 @@ namespace CookEasy.ViewModels
         {
             Random random = new Random();
             return cardColors[random.Next(0, cardColors.Length)];
->>>>>>> Stashed changes
->>>>>>> merger
         }
     }
 }

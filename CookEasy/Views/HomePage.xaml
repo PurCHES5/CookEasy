@@ -28,16 +28,6 @@
     <Grid>
         <RefreshView RefreshColor="#ff9c54" 
                      Command="{Binding RefreshCommand}"
-<<<<<<< HEAD
-                     IsRefreshing="{Binding IsBusy, Mode=OneWay}">
-            <ScrollView Scrolled="ScrollView_Scrolled">
-                <StackLayout>
-                    <Label Text="Popular recipes" FontAttributes="Bold" FontSize="30" TextColor="Black" Margin="15,70,0,0"></Label>
-                    <CollectionView
-                        Margin="0,10,0,0"
-                        RemainingItemsThreshold="1"
-                        RemainingItemsThresholdReachedCommand="{Binding DelayLoadMoreCommand}"
-=======
                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                      Margin="0,60,0,0">
             <ScrollView Scrolled="ScrollView_Scrolled">
@@ -47,7 +37,6 @@
                         Margin="0,5,0,0"
                         RemainingItemsThreshold="1"
                         RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}"
->>>>>>> merger
                         BackgroundColor="Transparent"
                         ItemsSource="{Binding RecipeRecomms}"
                         HeightRequest="285"
@@ -62,22 +51,18 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:RecipeProp">
                                 <Frame BackgroundColor="Transparent" Padding="10,5">
-                                <yummy:PancakeView 
-<<<<<<< HEAD
-                                    BackgroundColor="#BBAEA5" 
-=======
+                                    <yummy:PancakeView 
                                     BackgroundColor="{Binding CardColor}" 
->>>>>>> merger
                                     CornerRadius="25">
                                         <yummy:PancakeView.Shadow>
                                             <yummy:DropShadow BlurRadius="3"/>
                                         </yummy:PancakeView.Shadow>
-                                    <StackLayout WidthRequest="210">
-                                        <Image Source="{Binding Image}" 
+                                        <StackLayout WidthRequest="210">
+                                            <Image Source="{Binding Image}" 
                                                HeightRequest="150"
                                                Aspect="AspectFill"/>
-                                        <yummy:PancakeView HeightRequest="65" Margin="15,0,10,0" >
-                                            <Label
+                                            <yummy:PancakeView HeightRequest="65" Margin="15,0,10,0" >
+                                                <Label
                                                 Margin="0"
                                                 FontAttributes="Bold"
                                                 Text="{Binding Name}"
@@ -88,77 +73,59 @@
                                                 CharacterSpacing="0.5"
                                                 FontSize="24"
                                                 TextColor="Black"/>
-                                        </yummy:PancakeView>
-<<<<<<< HEAD
-                                        <StackLayout HeightRequest="30" Orientation="Horizontal" VerticalOptions="End" Margin="12,5">
-                                            <yummy:PancakeView CornerRadius="30" 
-                                                               BackgroundColor="White" 
-                                                               IsVisible="True">
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Color="#00DC00" Thickness="5"/>
-=======
-                                        <StackLayout HeightRequest="30" 
+                                            </yummy:PancakeView>
+                                            <StackLayout HeightRequest="30" 
                                                      Orientation="Horizontal" 
                                                      VerticalOptions="End" 
                                                      Margin="12,5">
-                                            <yummy:PancakeView CornerRadius="30" 
+                                                <yummy:PancakeView CornerRadius="30" 
                                                                BackgroundColor="White" 
                                                                IsVisible="{Binding EasyAvailable}">
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Color="#00DC00" Thickness="{Binding DifficultyEasyBorder}"/>
->>>>>>> merger
-                                                </yummy:PancakeView.Border>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Ellipse Fill="#00DC00"
+                                                    <yummy:PancakeView.Border>
+                                                        <yummy:Border Color="#00DC00" Thickness="{Binding DifficultyEasyBorder}"/>
+                                                    </yummy:PancakeView.Border>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Ellipse Fill="#00DC00"
                                                                 HeightRequest="20"
                                                                 WidthRequest="20"
                                                                 Aspect="Uniform"
                                                                 Margin="5,0,-2,0"/>
-                                                    <Label Text="Easy    " 
+                                                        <Label Text="Easy    " 
                                                             FontSize="12.5"
                                                             FontAttributes="Bold"
                                                             TextColor="#007300" 
                                                             VerticalOptions="Center"
                                                             BackgroundColor="Transparent"/>
-                                                </StackLayout>
-                                            </yummy:PancakeView>
-                                            <yummy:PancakeView CornerRadius="30" 
+                                                    </StackLayout>
+                                                </yummy:PancakeView>
+                                                <yummy:PancakeView CornerRadius="30" 
                                                                BackgroundColor="White" 
-<<<<<<< HEAD
-                                                               IsVisible="True">
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Color="#00A8DC" Thickness="5"/>
-=======
                                                                IsVisible="{Binding AdvancedAvailable}">
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Color="#00A8DC" Thickness="{Binding DifficultyAdvancedBorder}"/>
->>>>>>> merger
-                                                </yummy:PancakeView.Border>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Ellipse Fill="#00A8DC"
+                                                    <yummy:PancakeView.Border>
+                                                        <yummy:Border Color="#00A8DC" Thickness="{Binding DifficultyAdvancedBorder}"/>
+                                                    </yummy:PancakeView.Border>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Ellipse Fill="#00A8DC"
                                                              HeightRequest="20"
                                                              WidthRequest="20"
                                                              Aspect="Uniform"
                                                              Margin="5,0,-2,0"/>
-                                                    <Label Text="Advanced    " 
+                                                        <Label Text="Advanced    " 
                                                            FontSize="12.5"
                                                            FontAttributes="Bold"
                                                            TextColor="#000F73" 
                                                            VerticalOptions="Center"
                                                            BackgroundColor="Transparent"/>
-                                                </StackLayout>
-                                            </yummy:PancakeView>
+                                                    </StackLayout>
+                                                </yummy:PancakeView>
+                                            </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                </yummy:PancakeView>
+                                    </yummy:PancakeView>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-<<<<<<< HEAD
-                    <Label Text="刘灏傻逼！" FontSize="50" TextColor="Black"></Label>
-=======
-                    
+
                     <Label Text="Baked" FontAttributes="Bold" FontSize="24" TextColor="Black" Margin="15,5,0,0"></Label>
                     
                     <CollectionView
@@ -254,28 +221,29 @@
                                             <ColumnDefinition Width="30"/>
                                         </Grid.ColumnDefinitions>
                                         <Ellipse Fill="#00DC00"
-                                                 HeightRequest="20"
-                                                 WidthRequest="20"
-                                                 Opacity="0.6"
+                                                 HeightRequest="{Binding DifficultyEasySize}"
+                                                 WidthRequest="{Binding DifficultyEasySize}"
+                                                 Opacity="{Binding DifficultyEasyOpacity}"
                                                  Aspect="Uniform"
                                                  VerticalOptions="Start"
                                                  HorizontalOptions="Center"
-                                                 Grid.Column="1"/>
+                                                 Grid.Column="1"
+                                                 IsVisible="{Binding EasyAvailable}"/>
                                         <Ellipse Fill="#00A8DC"
-                                                 HeightRequest="30"
-                                                 WidthRequest="30"
-                                                 Opacity="0.6"
+                                                 HeightRequest="{Binding DifficultyAdvancedSize}"
+                                                 WidthRequest="{Binding DifficultyAdvancedSize}"
+                                                 Opacity="{Binding DifficultyAdvancedOpacity}"
                                                  Aspect="Uniform"
                                                  VerticalOptions="Start"
                                                  HorizontalOptions="Center"
-                                                 Grid.Column="2"/>
+                                                 Grid.Column="2"
+                                                 IsVisible="{Binding AdvancedAvailable}"/>
                                     </Grid>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                     <Label Text="Popular recipes" FontAttributes="Bold" FontSize="30" TextColor="Black" Margin="15,00,0,0"></Label>
->>>>>>> merger
                 </StackLayout>
             </ScrollView>
         </RefreshView>

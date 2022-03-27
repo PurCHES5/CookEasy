@@ -151,11 +151,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
   </ItemGroup>
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> merger
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_favorite_border_24px.png" />
   </ItemGroup>
@@ -165,13 +160,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\TestRecipeImage.jpeg" />
   </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_favorite_24px.png" />
   </ItemGroup>
->>>>>>> Stashed changes
->>>>>>> merger
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
