@@ -16,6 +16,9 @@ namespace CookEasy.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         public ObservableCollection<RecipeProp> RecipeRecomms { get; set; }
+        public ObservableCollection<RecipeProp> CategoryRecommsA { get; set; }
+        public ObservableCollection<RecipeProp> CategoryRecommsB { get; set; }
+        public ObservableCollection<RecipeProp> CategoryRecommsC { get; set; }
 
         public HomePageViewModel(INavigation navigation)
         {
@@ -25,20 +28,23 @@ namespace CookEasy.ViewModels
             RefreshCommand = new AsyncCommand(Refresh);
 
             RecipeRecomms = new ObservableRangeCollection<RecipeProp>();
+            CategoryRecommsA = new ObservableCollection<RecipeProp>();
+            CategoryRecommsB = new ObservableCollection<RecipeProp>();
+            CategoryRecommsC = new ObservableCollection<RecipeProp>();
             GoToRecipe = new Command(OnGoToRecipe);
             RefreshCommand = new AsyncCommand(Refresh);
-            LoadMoreCommand = new Command(LoadMore);
+            LoadMoreCommand = new Command(LoadMoreRecipeRecomms);
 
-            RecipeRecomms = new ObservableRangeCollection<RecipeProp>();
-
-            LoadMore();
+            LoadMoreRecipeRecomms();
+            LoadCategoryRecomms(CategoryRecommsA);
+            LoadCategoryRecomms(CategoryRecommsB);
+            LoadCategoryRecomms(CategoryRecommsC);
         }
 
         public INavigation Navigation { get; set; }
         public ICommand GoToRecipe { get; }
 
         public AsyncCommand RefreshCommand { get; }
-        public AsyncCommand<object> SelectedCommand { get; }
 
         public Command LoadMoreCommand { get; }
         public Command ClearCommand { get; }
@@ -71,21 +77,36 @@ namespace CookEasy.ViewModels
             await Task.Delay(2000);
 
             RecipeRecomms.Clear();
-            LoadMore();
+            CategoryRecommsA.Clear();
+            CategoryRecommsB.Clear();
+            CategoryRecommsC.Clear();
+            LoadMoreRecipeRecomms();
+            LoadCategoryRecomms(CategoryRecommsA);
+            LoadCategoryRecomms(CategoryRecommsB);
+            LoadCategoryRecomms(CategoryRecommsC);
 
             IsBusy = false;
         }
 
-        void LoadMore()
+        void LoadMoreRecipeRecomms()
         {
             if (RecipeRecomms.Count >= 8)
                 return;
 
             var image = "TestRecipeImage.jpeg";
-            RecipeRecomms.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, Likes = 129, CardColor = RandomColorPicker() });
-            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, Likes = 82, CardColor = RandomColorPicker() });
-            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2, Likes = 14, CardColor = RandomColorPicker() });
+            RecipeRecomms.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, CardColor = RandomColorPicker() });
+            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, CardColor = RandomColorPicker() });
+            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2,  CardColor = RandomColorPicker() });
             RecipeRecomms.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image, Difficulty = 1, DifficultiesAvail = 1, CardColor = RandomColorPicker() });
+        }
+
+        void LoadCategoryRecomms(ObservableCollection<RecipeProp> collection)
+        {
+            var image = "TestRecipeImage.jpeg";
+            collection.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, Likes = 129 });
+            collection.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, Likes = 82 });
+            collection.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2, Likes = 14 });
+            collection.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image, Difficulty = 1, DifficultiesAvail = 1 });
         }
 
         string RandomColorPicker()

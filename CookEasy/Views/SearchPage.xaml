@@ -4,22 +4,68 @@
              xmlns:vm="clr-namespace:CookEasy.ViewModels"
              xmlns:views="clr-namespace:CookEasy.Views"
              x:Class="CookEasy.Views.SearchPage"
-             x:DataType="vm:SearchPageViewModel"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:models="clr-namespace:CookEasy.Models">
 
     <ContentPage.Content>
         <Grid>
             <ScrollView Scrolled="ScrollView_Scrolled">
-                <StackLayout Padding="20,20,20,20" Spacing="15" Margin="0,60,0,0">
-                    <Label Text="History"
-                           VerticalOptions="CenterAndExpand" 
-                           HorizontalOptions="CenterAndExpand"
-                           FontSize="Large"
-                           TextColor="Black"/>
-                    <Label Text="123" TextColor="#99000000" FontSize="Large" />
-                    <yummy:PancakeView>
-                        
-                    </yummy:PancakeView>
+                <StackLayout Margin="0,60,0,0">
+                    <Label Text="History" 
+                           FontAttributes="Bold" 
+                           FontSize="20" 
+                           TextColor="Black" 
+                           Margin="15,15,0,0"></Label>
+                    <CollectionView
+                        Margin="0,10,0,0"
+                        BackgroundColor="Transparent"
+                        ItemsSource="{Binding Categories}"
+                        HeightRequest="1000"
+                        ItemsLayout="VerticalGrid, 2"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged"
+                        >
+                        <CollectionView.EmptyView>
+                            <StackLayout Padding="12">
+                                <Label HorizontalOptions="Center" Text="No coffee" />
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeProp">
+                                <Grid>
+                                    <Frame BackgroundColor="Transparent" Padding="0">
+                                        <Grid BackgroundColor="Transparent"
+                                                  RowSpacing="0"
+                                                  ColumnSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="140"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Image}" 
+                                                   Grid.RowSpan="3"
+                                                   Aspect="AspectFill"/>
+                                            <yummy:PancakeView Grid.RowSpan="3" BackgroundColor="Black" Opacity="0.7"/>
+                                            <yummy:PancakeView Grid.Row="1" >
+                                                <Label
+                                                    Margin="0,4,0,0"
+                                                    Text="{Binding Name}"
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Center"
+                                                    MaxLines="2"
+                                                    CharacterSpacing="0.5"
+                                                    FontAttributes="Bold"
+                                                    FontSize="30"
+                                                    TextColor="White"/>
+                                            </yummy:PancakeView>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </ScrollView>
 

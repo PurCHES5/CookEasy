@@ -10,11 +10,12 @@
         <Grid>
             <ScrollView Scrolled="ScrollView_Scrolled">
                 <StackLayout Padding="20,20,20,20" Spacing="15" Margin="0,60,0,0">
-                    <Label Text="History"
+                    <Label Text="Result for "
                            VerticalOptions="CenterAndExpand" 
                            HorizontalOptions="CenterAndExpand"
                            FontSize="Large"
-                           TextColor="Black"/>
+                           TextColor="Black"
+                           x:Name="result_Label"/>
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Button Clicked="Button_Clicked"></Button>
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />

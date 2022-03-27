@@ -14,10 +14,11 @@ namespace CookEasy.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchResultPage : ContentPage
     {
-        public SearchResultPage()
+        public SearchResultPage(string query)
         {
             InitializeComponent();
             BindingContext = new SearchResultPageViewModel(Navigation);
+            result_Label.Text = $"Result for \"{query}\"";
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
