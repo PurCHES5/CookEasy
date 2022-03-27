@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CookEasy.Views.SearchResultPage"
-             x:DataType="vm:SearchResultPageViewModel"
+             x:Class="CookEasy.Views.RecipePage"
+             x:DataType="vm:RecipePageViewModel"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              xmlns:vm="clr-namespace:CookEasy.ViewModels">
-    
+
     <ContentPage.Content>
         <Grid>
             <ScrollView Scrolled="ScrollView_Scrolled">
                 <StackLayout Padding="20,20,20,20" Spacing="15" Margin="0,60,0,0">
-                    <Label Text="History"
+                    <Label Text="Data_Missing"
                            VerticalOptions="CenterAndExpand" 
                            HorizontalOptions="CenterAndExpand"
                            FontSize="Large"
-                           TextColor="Black"/>
+                           TextColor="Black"
+                           x:Name="Title"/>
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Button Clicked="Button_Clicked"></Button>
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
@@ -50,24 +50,23 @@
                 </yummy:PancakeView.Shadow>
                 <Grid>
                     <ImageButton Source="ic_arrow_back_24px" 
-                                 Clicked="Back_Button_Clicked"
+                                 Clicked="ImageButton_Clicked"
                                  HorizontalOptions="Start" 
                                  HeightRequest="20"
                                  BackgroundColor="#F1F1F1"
                                  Margin="10,0,0,0"/>
-                    <Button Text="Search for recipes..." 
-                        Command="{Binding GoToRecipe}" 
-                        CornerRadius="30" 
-                        HorizontalOptions="FillAndExpand" 
-                        VerticalOptions="Center" 
-                        HeightRequest="50" 
-                        Padding="-80,0,0,0" 
-                        BackgroundColor="White"
-                        TextColor="#B4B4B4" 
-                        TextTransform="None" 
-                        Margin="40,0,15,0" 
-                        FontSize="18"/>
-                    <Image Source="ic_search_24px" HeightRequest="30" HorizontalOptions="Start" Margin="55,0,0,0"></Image>
+                    <ImageButton Source="ic_share_24px" 
+                                 Clicked="ImageButton_Clicked"
+                                 HorizontalOptions="End" 
+                                 HeightRequest="25"
+                                 BackgroundColor="#F1F1F1"
+                                 Margin="0,0,70,0"/>
+                    <ImageButton Source="ic_favorite_border_24px" 
+                                 Clicked="ImageButton_Clicked"
+                                 HorizontalOptions="End" 
+                                 HeightRequest="25"
+                                 BackgroundColor="#F1F1F1"
+                                 Margin="0,0,20,0"/>
                 </Grid>
             </yummy:PancakeView>
         </Grid>

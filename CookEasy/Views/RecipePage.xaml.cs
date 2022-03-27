@@ -12,12 +12,13 @@ using CookEasy.Models;
 namespace CookEasy.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchResultPage : ContentPage
+    public partial class RecipePage : ContentPage
     {
-        public SearchResultPage()
+        public RecipePage(RecipeProp recipeRecomms)
         {
             InitializeComponent();
-            BindingContext = new SearchResultPageViewModel(Navigation);
+            BindingContext = new RecipePageViewModel(Navigation);
+            Title.Text = recipeRecomms.Name;
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
@@ -37,21 +38,9 @@ namespace CookEasy.Views
 
         }
 
-        protected async override void OnAppearing()
+        private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            base.OnAppearing();
-            await Navigation.PopModalAsync();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            RecipeProp recipeProp = new RecipeProp { Name = "Garlic bread" };
-            Navigation.PushModalAsync(new RecipePage(recipeProp));
-        }
-
-        private async void Back_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavPage());
+            OnBackButtonPressed();
         }
     }
 }

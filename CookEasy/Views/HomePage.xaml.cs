@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CookEasy.ViewModels;
+using CookEasy.Models;
 
 namespace CookEasy.Views
 {
@@ -36,11 +37,15 @@ namespace CookEasy.Views
 
         }
 
-        private async void refreshView_Refreshing(object sender, EventArgs e)
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Task.Delay(3000);
-            // call vm
-            refreshView.IsRefreshing = false;
+            var recipe = e.CurrentSelection.FirstOrDefault() as RecipeProp;
+            if (recipe == null)
+                return;
+
+            await Navigation.PushModalAsync(new RecipePage(recipe));
+
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

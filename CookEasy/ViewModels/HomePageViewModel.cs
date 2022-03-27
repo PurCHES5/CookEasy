@@ -5,19 +5,37 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using CookEasy.Views;
 using System.Threading.Tasks;
+using Command = MvvmHelpers.Commands.Command;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
+using CookEasy.Models;
+using System.Collections.ObjectModel;
 
 namespace CookEasy.ViewModels
 {
-    public class HomePageViewModel : BindableObject
+    public class HomePageViewModel : BaseViewModel
     {
+        public ObservableCollection<RecipeProp> RecipeRecomms { get; set; }
+
         public HomePageViewModel(INavigation navigation)
         {
-            GoToRecipe = new Command(OnGoToRecipe);
             this.Navigation = navigation;
+
+            GoToRecipe = new Command(OnGoToRecipe);
+            RefreshCommand = new AsyncCommand(Refresh);
+
+            RecipeRecomms = new ObservableRangeCollection<RecipeProp>();
         }
 
         public INavigation Navigation { get; set; }
         public ICommand GoToRecipe { get; }
+
+        public AsyncCommand RefreshCommand { get; }
+        public AsyncCommand<object> SelectedCommand { get; }
+
+        public Command LoadMoreCommand { get; }
+        public Command DelayLoadMoreCommand { get; }
+        public Command ClearCommand { get; }
 
         string recipeText = "Cake";
         public string RecipeText
@@ -32,16 +50,31 @@ namespace CookEasy.ViewModels
             }
         }
 
-        public bool isRefreshingPage;
-
         async void OnGoToRecipe()
         {
             await Navigation.PushModalAsync(new SearchPage());
         }
 
-        public async void OnRefreshingPage()
+        async Task Refresh()
         {
-            // refresh page content, call this method from code behind
+            IsBusy = true;
+
+            await Task.Delay(2000);
+
+            RecipeRecomms.Clear();
+            LoadMore();
+
+            IsBusy = false;
+        }
+
+        void LoadMore()
+        {
+            var image = "TestRecipeImage.jpeg";
+            RecipeRecomms.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image });
+            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image });
+            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image });
+            RecipeRecomms.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image });
+            RecipeRecomms.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image });
         }
     }
 }

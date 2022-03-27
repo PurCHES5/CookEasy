@@ -7,7 +7,8 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
             BarBackgroundColor="White"
             SelectedTabColor="#ff9c54"
-            UnselectedTabColor="#b1b1b1">
+            UnselectedTabColor="#b1b1b1"
+            android:TabbedPage.IsSwipePagingEnabled="False">
   <!--Pages can be added as references or inline-->
     <local:HomePage IconImageSource="ic_home_24px" Title="Home"/>
     <local:CreateRecipeMiddlePage IconImageSource="ic_new_button" Title="Create Recipe"/>
