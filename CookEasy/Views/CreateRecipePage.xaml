@@ -1,43 +1,248 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CookEasy.Views.CreateRecipePage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="CookEasy.Views.CreateRecipePage"
+             xmlns:vm="clr-namespace:CookEasy.ViewModels"
+             xmlns:models="clr-namespace:CookEasy.Models" 
+             x:DataType="vm:CreateRecipePageViewModel"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:services="clr-namespace:CookEasy.Services"
+             x:Name="page">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <services:BoolOpacityConverter x:Key="boolOpacityConventer" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <ScrollView>
+            <StackLayout>
+                <yummy:PancakeView
+                    Margin="5,73,5,10"
+                    CornerRadius="10">
+                    <yummy:PancakeView.Border>
+                        <yummy:Border Color="#b1b1b1" DashPattern="30,5" Thickness="5"/>
+                    </yummy:PancakeView.Border>
+                    <ffimageloading:CachedImage 
+                    Aspect="AspectFill"
+                    HeightRequest="300"
+                    Source="upload_image.png"
+                    x:Name="upload_image"
+                    DownsampleToViewSize="True">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnUploadImage"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+                </yummy:PancakeView>
 
-    <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Spacing="10">
-            <Label Text="傻逼刘灏" TextColor="Black" FontSize="Medium" />
-        </StackLayout>
-    </NavigationPage.TitleView>
+                <yummy:PancakeView
+                    Margin="20,3"
+                    HeightRequest="60"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="15">
+                    <Entry 
+                        Placeholder="Title: Sponge cake"
+                        Margin="10,0"/>
+                </yummy:PancakeView>
 
-    <ScrollView>
-        <StackLayout Spacing="10" HorizontalOptions="Start" VerticalOptions="Start">
-            <Label Text="Me Page" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-            <Label Text="Settings" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-            <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-        </StackLayout>
-    </ScrollView>
+                <Grid HeightRequest="50" ColumnSpacing="0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <yummy:PancakeView
+                        Grid.Column="1"
+                        BackgroundColor="#00DC00"
+                        CornerRadius="30,0,30,0"
+                        HorizontalOptions="FillAndExpand"
+                        Opacity="{Binding IsEasy, Converter={StaticResource boolOpacityConventer}}">
+                        <yummy:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EasyClicked}"/>
+                        </yummy:PancakeView.GestureRecognizers>
+                        <Label
+                            Text="Easy"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+                    </yummy:PancakeView>
+                    <yummy:PancakeView
+                        Grid.Column="2"
+                        BackgroundColor="#00A8DC"
+                        CornerRadius="0,30,0,30"
+                        HorizontalOptions="FillAndExpand"
+                        Opacity="{Binding IsAdvanced, Converter={StaticResource boolOpacityConventer}}">
+                        <yummy:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AdvancedClicked}"/>
+                        </yummy:PancakeView.GestureRecognizers>
+                        <Label
+                            Text="Advanced"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+                    </yummy:PancakeView>
+                </Grid>
+
+                <yummy:PancakeView
+                    Margin="20,3"
+                    HeightRequest="60"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="15">
+                    <Entry 
+                        Placeholder="Cook Time: 1 hr 10 mins"
+                        Margin="10,0"/>
+                </yummy:PancakeView>
+
+                <yummy:PancakeView
+                    Margin="20,3"
+                    HeightRequest="60"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="15">
+                    <Entry 
+                        Placeholder="Portion: 2 people"
+                        Margin="10,0"/>
+                </yummy:PancakeView>
+
+                <Label
+                    Margin="20,10,0,0"
+                    Text="Ingredients"
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    TextColor="Black"/>
+                <Label
+                    Margin="20,10,0,0"
+                    Text="Main Ingredients"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    TextColor="Black"/>
+                <Label
+                    Margin="20,0,0,0"
+                    Text="Those must-included ingredients"
+                    FontAttributes="Bold,Italic"
+                    FontSize="12"
+                    TextColor="Black"/>
+
+                <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding MainIngredients}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecipeIngre">
+                            <Grid 
+                                ColumnSpacing="0" 
+                                RowSpacing="0" 
+                                HeightRequest="60" 
+                                Margin="20,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <yummy:PancakeView
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    CornerRadius="15"
+                                    Grid.Column="0">
+                                    <Entry 
+                                    Placeholder="{Binding Placeholder}"
+                                    Text="{Binding Content}"
+                                    Margin="10,0"/>
+                                </yummy:PancakeView>
+                                <ImageButton
+                                    Source="ic_delete_24px"
+                                    Grid.Column="1"
+                                    Padding="12,12,0,12"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Path=BindingContext.MainIngredientDelete, Source={Reference Name=page}}"
+                                    CommandParameter="{Binding Order}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+                <Button
+                    BackgroundColor="#FF9C54"
+                    Text="Add Ingredient"
+                    TextColor="White"
+                    TextTransform="None"
+                    FontAttributes="Bold"
+                    CharacterSpacing="1"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    HeightRequest="60"
+                    CornerRadius="30"
+                    Command="{Binding MainIngredientAdd}"/>
+
+                <Label
+                    Margin="20,20,0,0"
+                    Text="Other Ingredients"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    TextColor="Black"/>
+                <Label
+                    Margin="20,0,0,0"
+                    Text="Those ingredients that are not necessarily required"
+                    FontAttributes="Bold,Italic"
+                    FontSize="12"
+                    TextColor="Black"/>
+
+            </StackLayout>
+        </ScrollView>
+
+        <yummy:PancakeView BackgroundColor="#F1F1F1" HeightRequest="60" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="5">
+            <yummy:PancakeView.Shadow>
+                <yummy:DropShadow BlurRadius="0" x:Name="titleBarShadow"/>
+            </yummy:PancakeView.Shadow>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Your own recipe!"
+                       TextColor="Black"
+                       FontSize="20"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       MaxLines="1"
+                       FontAttributes="Bold"
+                       Margin="10,0,0,0"/>
+                <Button 
+                    BackgroundColor="#00A8DC"
+                    CornerRadius="30"
+                    Command="{Binding SaveButtonClicked}"
+                    Margin="0,10"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    Text="Save"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextTransform="None"
+                    TextColor="White"/>
+                <Button 
+                    BackgroundColor="#FF9C54"
+                    CornerRadius="30"
+                    Command="{Binding PublishButtonClicked}"
+                    Margin="0,10"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    Text="Publish"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextTransform="None"
+                    TextColor="White"/>
+            </Grid>
+        </yummy:PancakeView>
+    </Grid>
 </ContentPage>

@@ -15,6 +15,7 @@ namespace CookEasy.Droid
         {
             base.OnCreate(savedInstanceState);
             Forms.SetFlags("UseLegacyRenderers");
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

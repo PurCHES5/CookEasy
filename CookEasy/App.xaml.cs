@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CookEasy.Views;
+using System.Reflection;
 
 namespace CookEasy
 {
@@ -10,9 +11,11 @@ namespace CookEasy
         public App()
         {
             InitializeComponent();
-            
+
             MainPage = new NavPage();
         }
+
+
 
         protected override void OnStart()
         {

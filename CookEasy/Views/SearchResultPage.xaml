@@ -5,7 +5,8 @@
              x:DataType="vm:SearchResultPageViewModel"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              xmlns:vm="clr-namespace:CookEasy.ViewModels"
-             xmlns:models="clr-namespace:CookEasy.Models" xmlns:contentviews="clr-namespace:CookEasy.ContentViews">
+             xmlns:models="clr-namespace:CookEasy.Models" 
+             xmlns:contentviews="clr-namespace:CookEasy.ContentViews">
 
     <ContentPage.Resources>
         <Style TargetType="contentviews:HomePageCategoryRecomms">

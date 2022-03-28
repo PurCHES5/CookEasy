@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:CookEasy.ViewModels"
+    xmlns:views="clr-namespace:CookEasy.Views"
+    x:Class="CookEasy.ContentViews.CreateRecipePageIngredient"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:models="clr-namespace:CookEasy.Models"
+    ColumnSpacing="0" 
+    RowSpacing="0" 
+    HeightRequest="60" 
+    Margin="20,3">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="50"/>
+    </Grid.ColumnDefinitions>
+    <yummy:PancakeView
+        BackgroundColor="White"
+        HorizontalOptions="FillAndExpand"
+        CornerRadius="15"
+        Grid.Column="0">
+        <Entry 
+        Placeholder="{Binding Placeholder}"
+        Text="{Binding Content}"
+        Margin="10,0"/>
+    </yummy:PancakeView>
+    <ImageButton
+        Source="ic_delete_24px"
+        Grid.Column="1"
+        Padding="12,12,0,12"
+        HorizontalOptions="End"
+        VerticalOptions="Center"
+        BackgroundColor="Transparent"
+        Command="{Binding Path=BindingContext.MainIngredientAdd, Source={Reference Name=page}}"
+        CommandParameter="0"/>
+</Grid>
