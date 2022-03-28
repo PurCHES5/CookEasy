@@ -47,10 +47,10 @@ namespace CookEasy.ViewModels
             Categories.Add(new RecipeProp { Name = "Chinese", Image = image });
             Categories.Add(new RecipeProp { Name = "Indian", Image = image });
             Categories.Add(new RecipeProp { Name = "Seafood", Image = image });
-            Categories.Add(new RecipeProp { Name = "Super\nEasy", Image = image });
+            Categories.Add(new RecipeProp { Name = "Super Easy", Image = image });
             Categories.Add(new RecipeProp { Name = "Baking", Image = image });
             Categories.Add(new RecipeProp { Name = "Seasonal", Image = image });
-            Categories.Add(new RecipeProp { Name = "Kid\nFriendly", Image = image });
+            Categories.Add(new RecipeProp { Name = "Kid Friendly", Image = image });
         }
     }
 }

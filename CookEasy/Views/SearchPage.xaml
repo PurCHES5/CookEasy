@@ -58,7 +58,8 @@
                                                     CharacterSpacing="0.5"
                                                     FontAttributes="Bold"
                                                     FontSize="30"
-                                                    TextColor="White"/>
+                                                    TextColor="White"
+                                                    Padding="20"/>
                                             </yummy:PancakeView>
                                         </Grid>
                                     </Frame>

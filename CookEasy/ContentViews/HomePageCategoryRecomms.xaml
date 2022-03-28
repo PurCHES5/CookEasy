@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:CookEasy.ViewModels"
+    xmlns:views="clr-namespace:CookEasy.Views"
+    x:Class="CookEasy.ContentViews.HomePageCategoryRecomms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:models="clr-namespace:CookEasy.Models">
+                                    <Frame BackgroundColor="Transparent" Padding="7,10">
+                                        <yummy:PancakeView 
+                                            BackgroundColor="White" 
+                                            CornerRadius="10">
+                                            <yummy:PancakeView.Shadow>
+                                                <yummy:DropShadow BlurRadius="3"/>
+                                            </yummy:PancakeView.Shadow>
+                                            <Grid BackgroundColor="Transparent"
+                                                  RowSpacing="0"
+                                                  ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="135"/>
+                                                    <RowDefinition Height="70"/>
+                                                    <RowDefinition Height="5"/>
+                                                </Grid.RowDefinitions>
+                                                <Image Source="{Binding Image}" 
+                                                       Grid.Row="0"
+                                                       Aspect="AspectFill"/>
+                                                <yummy:PancakeView Grid.Row="1" Margin="10,10,10,0" >
+                                                    <Label
+                                                        Margin="0,4,0,0"
+                                                        Text="{Binding Name}"
+                                                        VerticalTextAlignment="Start"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="TailTruncation"
+                                                        MaxLines="3"
+                                                        CharacterSpacing="0.5"
+                                                        FontAttributes="Bold"
+                                                        FontSize="15"
+                                                        TextColor="Black"/>
+                                                </yummy:PancakeView>
+                                                <yummy:PancakeView 
+                                                    BackgroundColor="#FF9C54" 
+                                                    Grid.RowSpan="2"
+                                                    Margin="55,120,55,55"
+                                                    CornerRadius="30">
+                                                    <Grid RowSpacing="0" ColumnSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="28"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="5"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image 
+                                                            Source="ic_favorite_24px" 
+                                                            HeightRequest="20" 
+                                                            VerticalOptions="Center"
+                                                            HorizontalOptions="End"
+                                                            Grid.Column="0"/>
+                                                        <Label 
+                                                            Text="{Binding Likes}" 
+                                                            FontSize="15" 
+                                                            FontAttributes="Bold" 
+                                                            TextColor="#402715"
+                                                            VerticalOptions="Center"
+                                                            HorizontalTextAlignment="Center"
+                                                            VerticalTextAlignment="Center"
+                                                            HorizontalOptions="Center"
+                                                            Grid.Column="1"/>
+                                                    </Grid>
+                                                </yummy:PancakeView>
+                                            </Grid>
+                                        </yummy:PancakeView>
+                                    </Frame>
+                                    <Grid BackgroundColor="Transparent"
+                                          RowSpacing="0"
+                                          ColumnSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="30"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Ellipse Fill="#00DC00"
+                                                 HeightRequest="{Binding DifficultyEasySize}"
+                                                 WidthRequest="{Binding DifficultyEasySize}"
+                                                 Opacity="{Binding DifficultyEasyOpacity}"
+                                                 Aspect="Uniform"
+                                                 VerticalOptions="Start"
+                                                 HorizontalOptions="Center"
+                                                 Grid.Column="1"
+                                                 IsVisible="{Binding EasyAvailable}"/>
+                                        <Ellipse Fill="#00A8DC"
+                                                 HeightRequest="{Binding DifficultyAdvancedSize}"
+                                                 WidthRequest="{Binding DifficultyAdvancedSize}"
+                                                 Opacity="{Binding DifficultyAdvancedOpacity}"
+                                                 Aspect="Uniform"
+                                                 VerticalOptions="Start"
+                                                 HorizontalOptions="Center"
+                                                 Grid.Column="2"
+                                                 IsVisible="{Binding AdvancedAvailable}"/>
+                                    </Grid>
+                                </Grid>

@@ -18,7 +18,7 @@ namespace CookEasy.Views
         {
             InitializeComponent();
             BindingContext = new SearchResultPageViewModel(Navigation);
-            result_Label.Text = $"Result for \"{query}\"";
+            result_Label.Text = $"Results for \"{query}\"";
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
@@ -53,6 +53,17 @@ namespace CookEasy.Views
         private async void Back_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavPage());
+        }
+
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var recipe = e.CurrentSelection.FirstOrDefault() as RecipeProp;
+            if (recipe == null)
+                return;
+
+            await Navigation.PushModalAsync(new RecipePage(recipe));
+
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }
