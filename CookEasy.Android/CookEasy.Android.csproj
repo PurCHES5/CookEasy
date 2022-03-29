@@ -182,7 +182,13 @@
     <AndroidResource Include="Resources\drawable-hdpi\upload_image.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_delete_24px.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_delete_24px.png" /> 
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\StartPageMeat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\StartPageVege.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

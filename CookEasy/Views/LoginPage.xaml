@@ -13,22 +13,19 @@
                 </Frame>
             </StackLayout>
             <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
-                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
+                <StackLayout Margin="10">
+                    <Label Text="Cook Easy" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
+                </StackLayout>
+                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0" CornerRadius="20">
 
                     <StackLayout>
-
-
-                        <StackLayout Margin="10">
-                            <Label Text="Cook Easy" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
-                        </StackLayout>
-
                         <StackLayout Padding="0" Margin="15,10">
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                    <yummy:PancakeView BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="https://www.findool.com/images/avatars/avatar.png" Aspect="AspectFill" Margin="0"/>
-                                    </Frame>
+                                    </yummy:PancakeView>
 
                                     <Entry Placeholder="Username" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                                 </StackLayout>

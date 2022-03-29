@@ -12,7 +12,7 @@ namespace CookEasy
         {
             InitializeComponent();
 
-            MainPage = new NavPage();
+            MainPage = new LoginPage();
         }
 
 
