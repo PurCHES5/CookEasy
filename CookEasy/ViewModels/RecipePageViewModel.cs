@@ -22,12 +22,12 @@ namespace CookEasy.ViewModels
 
         async void OnGoToRecipe()
         {
-            await Navigation.PushModalAsync(new SearchPage());
+            await Navigation.PushAsync(new SearchPage());
         }
 
         async void OnBackButtonClicked()
         {
-            await Navigation.PushModalAsync(new SearchPage());
+            await Navigation.PushAsync(new SearchPage());
         }
     }
 }

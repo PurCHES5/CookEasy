@@ -43,7 +43,7 @@ namespace CookEasy.Views
             if (recipe == null)
                 return;
 
-            await Navigation.PushModalAsync(new RecipePage(recipe));
+            await Navigation.PushAsync(new RecipePage(recipe));
 
             ((CollectionView)sender).SelectedItem = null;
         }

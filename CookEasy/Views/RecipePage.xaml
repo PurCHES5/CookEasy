@@ -4,21 +4,79 @@
              x:Class="CookEasy.Views.RecipePage"
              x:DataType="vm:RecipePageViewModel"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:vm="clr-namespace:CookEasy.ViewModels">
+             xmlns:vm="clr-namespace:CookEasy.ViewModels" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
         <Grid>
             <ScrollView Scrolled="ScrollView_Scrolled">
-                <StackLayout Padding="20,20,20,20" Spacing="15" Margin="0,60,0,0">
+                <StackLayout Margin="0,80,0,0">
+                    <ffimageloading:CachedImage 
+                        Aspect="AspectFill"
+                        HeightRequest="300"
+                        Source="TestRecipeImage.png"
+                        DownsampleToViewSize="True">
+                    </ffimageloading:CachedImage>
                     <Label Text="Data_Missing"
-                           VerticalOptions="CenterAndExpand" 
-                           HorizontalOptions="CenterAndExpand"
-                           FontSize="Large"
+                           VerticalOptions="Center" 
+                           FontSize="28"
+                           MaxLines="3"
+                           FontAttributes="Bold"
                            TextColor="Black"
+                           HorizontalOptions="Start"
+                           Margin="20,10,0,0"
                            x:Name="Title"/>
+                    <Grid Margin="20,0,0,0" HeightRequest="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label 
+                            Text="Ingredients" 
+                            TextColor="Black" 
+                            FontSize="30"
+                            FontAttributes="Bold"
+                            CharacterSpacing="0.5"
+                            Grid.Column="0"
+                            Grid.RowSpan="3"
+                            VerticalOptions="Center"/>
+                        <Frame
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            BackgroundColor="Black"/>
+                    </Grid>
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+                    <Grid Margin="20,0,0,0" HeightRequest="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label 
+                            Text="Steps" 
+                            TextColor="Black" 
+                            FontSize="30"
+                            FontAttributes="Bold"
+                            CharacterSpacing="0.5"
+                            Grid.Column="0"
+                            Grid.RowSpan="3"
+                            VerticalOptions="Center"/>
+                        <Frame
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            BackgroundColor="Black"/>
+                    </Grid>
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
                     <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
@@ -48,25 +106,50 @@
                 <yummy:PancakeView.Shadow>
                     <yummy:DropShadow BlurRadius="0" x:Name="titleBarShadow"/>
                 </yummy:PancakeView.Shadow>
-                <Grid>
+                <Grid ColumnSpacing="20" Margin="10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
                     <ImageButton Source="ic_arrow_back_24px" 
                                  Clicked="ImageButton_Clicked"
                                  HorizontalOptions="Start" 
-                                 HeightRequest="20"
                                  BackgroundColor="#F1F1F1"
-                                 Margin="10,0,0,0"/>
+                                 Grid.Column="0"/>
+                    <Label Text="Keny Kiambu Handege"
+                           TextColor="Black"
+                           FontSize="22"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="1"
+                           CharacterSpacing="0.5"
+                           Grid.Column="1"
+                           VerticalOptions="Center"
+                           x:Name="TitleLabel"/>
+                    <Label Text="EDIT"
+                           TextColor="Black"
+                           TextDecorations="Underline"
+                           FontSize="18"
+                           CharacterSpacing="0.5"
+                           FontAttributes="Bold"
+                           Grid.Column="2"
+                           VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                        </Label.GestureRecognizers>
+                    </Label>
                     <ImageButton Source="ic_share_24px" 
                                  Clicked="ImageButton_Clicked"
-                                 HorizontalOptions="End" 
-                                 HeightRequest="25"
+                                 HorizontalOptions="Center" 
                                  BackgroundColor="#F1F1F1"
-                                 Margin="0,0,70,0"/>
+                                 Grid.Column="3"/>
                     <ImageButton Source="ic_favorite_border_24px" 
                                  Clicked="ImageButton_Clicked"
-                                 HorizontalOptions="End" 
-                                 HeightRequest="25"
+                                 HorizontalOptions="Center" 
                                  BackgroundColor="#F1F1F1"
-                                 Margin="0,0,20,0"/>
+                                 Grid.Column="4"/>
                 </Grid>
             </yummy:PancakeView>
         </Grid>

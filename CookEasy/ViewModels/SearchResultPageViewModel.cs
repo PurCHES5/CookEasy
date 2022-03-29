@@ -32,8 +32,8 @@ namespace CookEasy.ViewModels
         }
 
         public INavigation Navigation { get; set; }
-        public ICommand BackButtonClick { get; }
-        public ICommand GoToRecipe { get; }
+        public Command BackButtonClick { get; }
+        public Command GoToRecipe { get; }
 
         public AsyncCommand RefreshCommand { get; }
 
@@ -41,12 +41,12 @@ namespace CookEasy.ViewModels
 
         async void OnBackButtonClicked()
         {
-            await Navigation.PushModalAsync(new SearchPage());
+            await Navigation.PopToRootAsync();
         }
 
         async void OnGoToRecipe()
         {
-            await Navigation.PushModalAsync(new SearchPage());
+            await Navigation.PopAsync();
         }
 
         async Task Refresh()

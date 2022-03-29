@@ -1,6 +1,4 @@
-﻿using CookEasy.ViewModels;
-using FFImageLoading;
-using Plugin.Media;
+﻿using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace CookEasy.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateRecipePage : ContentPage
+    public partial class MePage : ContentPage
     {
-        public CreateRecipePage()
+        public MePage()
         {
             InitializeComponent();
-
-            BindingContext = new CreateRecipePageViewModel(Navigation);
-
-            var config = new FFImageLoading.Config.Configuration()
-            {
-                ExecuteCallbacksOnUIThread = true
-            };
-            ImageService.Instance.Initialize(config);
         }
 
         async void OnUploadImage(object sender, EventArgs e)
@@ -65,7 +55,12 @@ namespace CookEasy.Views
             if (file == null)
                 return;
 
-            upload_image.Source = ImageSource.FromFile(file.Path);
+            avatar_image.Source = ImageSource.FromFile(file.Path);
+        }
+
+        private void SignOut_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new LoginPage());
         }
     }
 }

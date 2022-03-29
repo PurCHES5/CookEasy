@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+<<<<<<< HEAD
+    <SelectedDevice>Android Emulator</SelectedDevice>
+    <ActiveDebugProfile>Android Emulator</ActiveDebugProfile>
+=======
+    <SelectedDevice>pixel_2_pie_9_0_-_api_28</SelectedDevice>
+    <ActiveDebugProfile>pixel_2_pie_9_0_-_api_28</ActiveDebugProfile>
+>>>>>>> 98ccd4e91a8fb72e5333d5f3cdd543ac94ebd58c
+    <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
+    <DefaultDevice>pixel_2_pie_9_0_-_api_28</DefaultDevice>
+  </PropertyGroup>
+</Project>

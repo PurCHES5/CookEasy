@@ -37,19 +37,13 @@ namespace CookEasy.Views
 
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            Navigation.PushModalAsync(new NavPage());
-            return true;
-        }
-
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var recipe = e.CurrentSelection.FirstOrDefault() as RecipeProp;
             if (recipe == null)
                 return;
 
-            await Navigation.PushModalAsync(new SearchResultPage(recipe.Name));
+            await Navigation.PushAsync(new SearchResultPage(recipe.Name));
 
             ((CollectionView)sender).SelectedItem = null;
         }

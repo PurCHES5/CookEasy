@@ -10,6 +10,7 @@ using MvvmHelpers;
 using MvvmHelpers.Commands;
 using CookEasy.Models;
 using System.Collections.ObjectModel;
+using Acr.UserDialogs;
 
 namespace CookEasy.ViewModels
 {
@@ -48,26 +49,18 @@ namespace CookEasy.ViewModels
 
         public Command LoadMoreCommand { get; }
         public Command ClearCommand { get; }
-
+        
+        /// <summary>
+        /// a set of colors to be randomly assigned to the top recommendation cards
+        /// </summary>
         public string[] cardColors = new string[9] {
             "#faced0", "#c74a6d", "#88697c", "#6da6bf", "#cee0f4", "#99c0c3", "#8cb173", "#cfce94", "#ffde99" };
 
-        string recipeText = "Cake";
-        public string RecipeText
-        {
-            get => recipeText;
-            set
-            {
-                if (value == recipeText)
-                    return;
-                recipeText = value;
-                OnPropertyChanged();
-            }
-        }
-
         async void OnGoToRecipe()
         {
-            await Navigation.PushModalAsync(new SearchPage());
+            var dialog = UserDialogs.Instance.Loading("", maskType: MaskType.Clear);
+            await Navigation.PushAsync(new SearchPage());
+            dialog.Hide();
         }
 
         async Task Refresh()

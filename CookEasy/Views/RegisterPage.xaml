@@ -4,31 +4,36 @@
     xmlns:vm="clr-namespace:CookEasy.ViewModels"
     xmlns:views="clr-namespace:CookEasy.Views"
     x:Class="CookEasy.Views.RegisterPage"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
-    <StackLayout BackgroundColor="#e6e6e6">
-        <Grid>
-            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                <Frame HeightRequest="150" BackgroundColor="Black" Padding="0" Margin="0">
-                    <Image Source="login_page_bg" Aspect="AspectFill" Margin="0"/>
-                </Frame>
-            </StackLayout>
-            <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
-                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
-
-                    <StackLayout>
-
-
-                        <StackLayout Margin="10">
-                            <Label Text="Register" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
-                        </StackLayout>
-
-                        <StackLayout Padding="0" Margin="15,10">
-
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:DataType="vm:StartPagesViewModel"
+    BackgroundColor="Black"
+    NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <RelativeLayout>
+            <ffimageloading:CachedImage Source="background_resized" Opacity="0.8" DownsampleToViewSize="True"
+                    RelativeLayout.WidthConstraint=
+                      "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint=
+                      "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+            <Grid RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            </Grid>
+        </RelativeLayout>
+        
+        <StackLayout>
+            <Grid>
+                <StackLayout Padding="0" Margin="20,100,20,0" HorizontalOptions="FillAndExpand">
+                    <Label Text="Register" TextColor="White" CharacterSpacing="0.5" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="40" Margin="0,0,0,60"/>
+                    <Frame BackgroundColor="White" HasShadow="True" Padding="0" Margin="0" CornerRadius="20">
+                        <StackLayout Padding="0" Margin="15,15,15,30">
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                    <Frame BackgroundColor="#c9eff5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="ic_perm_identity_24px.png" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-
                                     <Entry Placeholder="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                                 </StackLayout>
                             </Frame>
@@ -36,41 +41,53 @@
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="ic_lock_24px" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-
                                     <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                                 </StackLayout>
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                    <Frame BackgroundColor="#2274b3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="ic_lock_24px" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-
                                     <Entry Placeholder="Confirm Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                                 </StackLayout>
                             </Frame>
 
-                            <StackLayout  Orientation="Horizontal">
+                            <StackLayout  Orientation="Horizontal" Margin="0,10">
                                 <CheckBox IsChecked="False" Color="Red" />
-                                <Label Text="User Agreement and Privacy Policy" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-
+                                <Label Text="By clicking Register, you agree to CookEasy's User Agreement and Privacy Policy" TextColor="Black" FontSize="12.5" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
                             </StackLayout>
-
-                            <Button Text="Register" BackgroundColor="Orange" TextColor="White" CornerRadius="30" />
-
-
                         </StackLayout>
-
-
-                    </StackLayout>
-
-                </Frame>
+                    </Frame>
+                    
+                    <Button 
+                        Text="Register" 
+                        BackgroundColor="#FF9C54" 
+                        TextColor="White" 
+                        CornerRadius="30" 
+                        Command="{Binding RegisterClicked}" 
+                        WidthRequest="200" 
+                        HeightRequest="50"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="0,-30"/>
+                    
+                </StackLayout>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,15">
+                <Label Text="Already have an account?" TextColor="GhostWhite" FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLoginPage}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Log in" TextColor="SkyBlue" FontAttributes="Bold" FontSize="16" TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLoginPage}"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Already have an account?" TextColor="DarkGray" FontSize="Small"/>
-                <Label Text="Log in" TextColor="SkyBlue" FontAttributes="Bold" FontSize="Small"/>
-            </StackLayout>
-        </Grid>
-    </StackLayout>
+        </StackLayout>
+    </Grid>
 </ContentPage>

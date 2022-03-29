@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:CookEasy.ViewModels"
              x:Class="CookEasy.Views.StarterPage"
-             BackgroundColor="#FF9C54">
+             x:DataType="vm:StartPagesViewModel"
+             BackgroundColor="#FF9C54"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="WELCOME!" TextColor="White" FontSize="60" FontAttributes="Bold" Margin="10" HorizontalOptions="CenterAndExpand" />
+            <Label Text="WELCOME!" TextColor="White" FontSize="50" FontAttributes="Bold" Margin="0,40,0,0" HorizontalOptions="Center" CharacterSpacing="1" />
             <Label Text="Before we continue... " TextColor="#979797" FontSize="20" FontAttributes="Italic,Bold" Margin="0,0,0,0" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="Are you a Vegetarian?" TextColor="Black" FontSize="50" FontAttributes="Bold" Margin="0,-20,0,40" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-            <ImageButton Source= "StartPageMeat.png" BackgroundColor="Transparent" Margin="0,0,0,20"/>
-            <ImageButton Source= "StartPageVege.png" BackgroundColor="Transparent"/>
+            <Label Text="Are you a Vegetarian?" TextColor="Black" FontSize="45" FontAttributes="Bold" Margin="0,-10,0,40" HorizontalOptions="Center" CharacterSpacing="0.75" HorizontalTextAlignment="Center" />
+            <ImageButton Source= "StartPageMeat.png"  HorizontalOptions="Center" Margin="0,30,0,30" Command="{Binding MeatLoverClicked}"/>
+            <ImageButton Source= "StartPageVege.png" BackgroundColor="Transparent" HorizontalOptions="Center" Command="{Binding VegtarainClicked}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

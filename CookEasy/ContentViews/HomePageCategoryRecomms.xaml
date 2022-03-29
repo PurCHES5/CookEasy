@@ -5,7 +5,8 @@
     xmlns:views="clr-namespace:CookEasy.Views"
     x:Class="CookEasy.ContentViews.HomePageCategoryRecomms"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-    xmlns:models="clr-namespace:CookEasy.Models">
+    xmlns:models="clr-namespace:CookEasy.Models"
+      xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
                                     <Frame BackgroundColor="Transparent" Padding="7,10">
                                         <yummy:PancakeView 
                                             BackgroundColor="White" 
@@ -21,9 +22,10 @@
                                                     <RowDefinition Height="70"/>
                                                     <RowDefinition Height="5"/>
                                                 </Grid.RowDefinitions>
-                                                <Image Source="{Binding Image}" 
+                                                <ffimageloading:CachedImage Source="{Binding Image}" 
                                                        Grid.Row="0"
-                                                       Aspect="AspectFill"/>
+                                                       Aspect="AspectFill"
+                                                       DownsampleToViewSize="True"/>
                                                 <yummy:PancakeView Grid.Row="1" Margin="10,10,10,0" >
                                                     <Label
                                                         Margin="0,4,0,0"
@@ -48,12 +50,11 @@
                                                             <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="5"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Image 
-                                                            Source="ic_favorite_24px" 
-                                                            HeightRequest="20" 
-                                                            VerticalOptions="Center"
-                                                            HorizontalOptions="End"
-                                                            Grid.Column="0"/>
+                                                        <ffimageloading:CachedImage 
+                                                            Source="ic_favorite_24px"  
+                                                            Aspect="AspectFit"
+                                                            Grid.Column="0"
+                                                            Margin="8,0,2,0"/>
                                                         <Label 
                                                             Text="{Binding Likes}" 
                                                             FontSize="15" 

@@ -32,12 +32,12 @@ namespace CookEasy.ViewModels
 
         public ICommand SearchRecipe => new Xamarin.Forms.Command<string>((string query) =>
         {
-            Navigation.PushModalAsync(new SearchResultPage(query));
+            Navigation.PushAsync(new SearchResultPage(query));
         });
 
-        private void OnBackButtonClicked()
+        private async void OnBackButtonClicked()
         {
-            Navigation.PushModalAsync(new NavPage());
+            await Navigation.PopAsync();
         }
 
         void LoadCategories()

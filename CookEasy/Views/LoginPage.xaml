@@ -4,27 +4,47 @@
     xmlns:vm="clr-namespace:CookEasy.ViewModels"
     xmlns:views="clr-namespace:CookEasy.Views"
     x:Class="CookEasy.Views.LoginPage"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
-    <StackLayout BackgroundColor="#e6e6e6">
-        <Grid>
-            <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                <Frame HeightRequest="150" BackgroundColor="Black" Padding="0" Margin="0">
-                    <Image Source="login_page_bg" Aspect="AspectFill" Margin="0"/>
-                </Frame>
-            </StackLayout>
-            <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
-                <StackLayout Margin="10">
-                    <Label Text="Cook Easy" TextColor="Green" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
-                </StackLayout>
-                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0" CornerRadius="20">
-
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:DataType="vm:StartPagesViewModel"
+    BackgroundColor="Black"
+    NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <RelativeLayout>
+            <ffimageloading:CachedImage Source="background_resized" Opacity="0.8" DownsampleToViewSize="True"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            </Grid>
+        </RelativeLayout>
+        <StackLayout>
+            <StackLayout Padding="0" Margin="30,40,30,0" HorizontalOptions="FillAndExpand">
+                <yummy:PancakeView 
+                        Margin="0,20,0,40"
+                        CornerRadius="100"
+                        HeightRequest="120"
+                        WidthRequest="120"  
+                        HorizontalOptions="CenterAndExpand"
+                        BackgroundColor="AliceBlue">
+                    <ffimageloading:CachedImage 
+                            Source="logo.png" 
+                            DownsampleToViewSize="True"
+                            Aspect="AspectFill"
+                            x:Name="avatar_image">
+                    </ffimageloading:CachedImage>
+                </yummy:PancakeView>
+                <Frame BackgroundColor="White" HasShadow="True" Padding="0" Margin="0" CornerRadius="20">
                     <StackLayout>
-                        <StackLayout Padding="0" Margin="15,10">
-
+                        <StackLayout Padding="0" Margin="15,20">
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <yummy:PancakeView BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                                        <Image Source="https://www.findool.com/images/avatars/avatar.png" Aspect="AspectFill" Margin="0"/>
+                                    <yummy:PancakeView BackgroundColor="#c9eff5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                        <Image Source="ic_perm_identity_24px.png" Aspect="AspectFit" Margin="8"/>
                                     </yummy:PancakeView>
 
                                     <Entry Placeholder="Username" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
@@ -34,7 +54,7 @@
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                                        <Image Source="https://images.all-free-download.com/images/graphicthumb/lock_icon_6813906.jpg" Aspect="AspectFill" Margin="0"/>
+                                        <Image Source="ic_lock_24px" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
 
                                     <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
@@ -43,38 +63,55 @@
 
                             <StackLayout  Orientation="Horizontal">
 
-                                <Label Text="Forgot Password?" TextColor="Black" FontAttributes="Bold" HorizontalOptions="EndAndExpand" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-
+                                <Label 
+                                    Text="Forgot Password?" 
+                                    TextColor="Black" 
+                                    FontAttributes="Bold" 
+                                    HorizontalOptions="EndAndExpand" 
+                                    FontSize="16" 
+                                    TextDecorations="Underline" 
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    Margin="0,5"/>
 
                             </StackLayout>
 
-                            <Button Text="LOG IN" BackgroundColor="Orange" TextColor="White" CornerRadius="30" />
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="Dont't have an account?" TextColor="DarkGray" FontSize="Small"/>
-                                <Label Text="Sign Up" TextColor="SkyBlue" FontAttributes="Bold" FontSize="Small"/>
-                            </StackLayout>
+                            <Button Text="LOG IN" BackgroundColor="#FF9C54" TextColor="White" CornerRadius="30" Command="{Binding LoginClicked}"/>
 
-                            <StackLayout Margin="0,25,0,0" Padding="0">
-                                <Grid>
-                                    <BoxView BackgroundColor="DarkGray" HeightRequest="1" WidthRequest="150"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Frame BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
-                                        <Label Text="OR" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                                    </Frame>
-                                </Grid>
-                            </StackLayout>
+                            <Grid>
+                                <BoxView BackgroundColor="DarkGray" HeightRequest="2" WidthRequest="150"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <yummy:PancakeView BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" Margin="0" HorizontalOptions="Center" Padding="0">
+                                    <yummy:PancakeView.Border>
+                                        <yummy:Border Color="DarkGray" Thickness="4"/>
+                                    </yummy:PancakeView.Border>
+                                    <Label Text="OR" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                </yummy:PancakeView>
+                            </Grid>
 
-                            <StackLayout Margin="0,25" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Image Source="FacebookLogo.png" WidthRequest="150" HeightRequest="50" Margin="5,0" />
-                                <Image Source="GoogleLogo.png" WidthRequest="150" HeightRequest="50" Margin="5,0"/>
-                            </StackLayout>
-
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="FacebookLogo.png" Grid.Column="0" Margin="5,0" />
+                                <Image Source="GoogleLogo.png" Grid.Column="1" HeightRequest="50" Margin="5,0"/>
+                            </Grid>
                         </StackLayout>
-
-
                     </StackLayout>
-
                 </Frame>
             </StackLayout>
-        </Grid>
-    </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,15">
+                <Label Text="Don't have an account?" TextColor="GhostWhite" FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToRegisterPage}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Sign Up" TextColor="SkyBlue" FontAttributes="Bold" FontSize="16" TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToRegisterPage}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
 </ContentPage>

@@ -8,9 +8,10 @@
             BarBackgroundColor="White"
             SelectedTabColor="#ff9c54"
             UnselectedTabColor="#b1b1b1"
-            android:TabbedPage.IsSwipePagingEnabled="False">
+            android:TabbedPage.IsSwipePagingEnabled="False"
+            NavigationPage.HasNavigationBar="False">
   <!--Pages can be added as references or inline-->
     <local:HomePage IconImageSource="ic_home_24px" Title="Home"/>
     <local:CreateRecipePage IconImageSource="ic_new_button" Title="Create Recipe"/>
-    <ContentPage IconImageSource="ic_account_circle_24px" Title="Me"/>
+    <local:MePage IconImageSource="ic_account_circle_24px" Title="Me"/>
 </TabbedPage>

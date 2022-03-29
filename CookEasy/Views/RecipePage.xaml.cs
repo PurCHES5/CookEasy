@@ -19,6 +19,7 @@ namespace CookEasy.Views
             InitializeComponent();
             BindingContext = new RecipePageViewModel(Navigation);
             Title.Text = recipeRecomms.Name;
+            TitleLabel.TextColor = Color.FromRgba(0.0, 0.0, 0.0, 0);
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
@@ -26,6 +27,16 @@ namespace CookEasy.Views
             var scrollView = sender as ScrollView;
 
             var TransY = e.ScrollY;
+
+            if (TransY > 330)
+            {
+                double alpha = (TransY - 330) / 60;
+                TitleLabel.TextColor = Color.FromRgba(0.0, 0.0, 0.0, alpha);
+            }
+            else
+            {
+                TitleLabel.TextColor = Color.FromRgba(0.0, 0.0, 0.0, 0);
+            }
 
             if (TransY < 20)
             {
@@ -36,11 +47,13 @@ namespace CookEasy.Views
                 titleBarShadow.BlurRadius = 5;
             }
 
+            
+
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private async void ImageButton_Clicked(object sender, EventArgs e)
         {
-            OnBackButtonPressed();
+            await Navigation.PopAsync();
         }
     }
 }

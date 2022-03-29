@@ -38,21 +38,10 @@ namespace CookEasy.Views
 
         }
 
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            await Navigation.PopModalAsync();
-        }
-
         private void Button_Clicked(object sender, EventArgs e)
         {
             RecipeProp recipeProp = new RecipeProp { Name = "Garlic bread" };
-            Navigation.PushModalAsync(new RecipePage(recipeProp));
-        }
-
-        private async void Back_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavPage());
+            Navigation.PushAsync(new RecipePage(recipeProp));
         }
 
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,9 +50,15 @@ namespace CookEasy.Views
             if (recipe == null)
                 return;
 
-            await Navigation.PushModalAsync(new RecipePage(recipe));
+            await Navigation.PushAsync(new RecipePage(recipe));
 
             ((CollectionView)sender).SelectedItem = null;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PopToRootAsync();
+            return true;
         }
     }
 }

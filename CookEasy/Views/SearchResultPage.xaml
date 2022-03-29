@@ -6,7 +6,8 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              xmlns:vm="clr-namespace:CookEasy.ViewModels"
              xmlns:models="clr-namespace:CookEasy.Models" 
-             xmlns:contentviews="clr-namespace:CookEasy.ContentViews">
+             xmlns:contentviews="clr-namespace:CookEasy.ContentViews"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <Style TargetType="contentviews:HomePageCategoryRecomms">
@@ -78,7 +79,7 @@
                 </yummy:PancakeView.Shadow>
                 <Grid>
                     <ImageButton Source="ic_arrow_back_24px" 
-                                 Clicked="Back_Button_Clicked"
+                                 Command="{Binding BackButtonClick}"
                                  HorizontalOptions="Start" 
                                  HeightRequest="20"
                                  BackgroundColor="#F1F1F1"
