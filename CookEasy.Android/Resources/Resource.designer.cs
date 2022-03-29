@@ -19664,6 +19664,7 @@ namespace CookEasy.Droid
 			public const int notification_template_icon_low_bg = 2131165358;
 			
 			// aapt resource value: 0x7F0700AF
+<<<<<<< Updated upstream
 			public const int notification_tile_bg = 2131165359;
 			
 			// aapt resource value: 0x7F0700B0
@@ -19695,6 +19696,30 @@ namespace CookEasy.Droid
 			
 			// aapt resource value: 0x7F0700B9
 			public const int xamarin_logo = 2131165369;
+=======
+			public const int preference_list_divider_material = 2131165359;
+			
+			// aapt resource value: 0x7F0700B0
+			public const int StartPageMeat = 2131165360;
+			
+			// aapt resource value: 0x7F0700B1
+			public const int StartPageVege = 2131165361;
+			
+			// aapt resource value: 0x7F0700B3
+			public const int TestRecipeImage = 2131165363;
+			
+			// aapt resource value: 0x7F0700B2
+			public const int test_custom_background = 2131165362;
+			
+			// aapt resource value: 0x7F0700B4
+			public const int tooltip_frame_dark = 2131165364;
+			
+			// aapt resource value: 0x7F0700B5
+			public const int tooltip_frame_light = 2131165365;
+			
+			// aapt resource value: 0x7F0700B6
+			public const int xamarin_logo = 2131165366;
+>>>>>>> Stashed changes
 			
 			static Drawable()
 			{

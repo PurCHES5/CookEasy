@@ -11,8 +11,13 @@ namespace CookEasy
         public App()
         {
             InitializeComponent();
+<<<<<<< Updated upstream
 
             MainPage = new NavPage();
+=======
+            
+            MainPage = new StarterPage();
+>>>>>>> Stashed changes
         }
 
 
