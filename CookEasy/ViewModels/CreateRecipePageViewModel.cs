@@ -17,6 +17,8 @@ namespace CookEasy.ViewModels
     class CreateRecipePageViewModel : BaseViewModel
     {
         public ObservableCollection<RecipeIngre> MainIngredients { get; set; }
+        public ObservableCollection<RecipeIngre> OtherIngredients { get; set; }
+        public ObservableCollection<RecipeIngre> Steps { get; set; }
 
         public CreateRecipePageViewModel(INavigation navigation)
         {
@@ -26,10 +28,18 @@ namespace CookEasy.ViewModels
             AdvancedClicked = new Command(OnAdvancedClicked);
             MainIngredientAdd = new Command(AddMainIngredients);
             MainIngredientDelete = new MvvmHelpers.Commands.Command<int>(DeleteMainIngredient);
+            OtherIngredientAdd = new Command(AddOtherIngredients);
+            OtherIngredientDelete = new MvvmHelpers.Commands.Command<int>(DeleteOtherIngredient);
+            StepAdd = new Command(AddSteps);
+            StepDelete = new MvvmHelpers.Commands.Command<int>(DeleteStep);
 
             MainIngredients = new ObservableCollection<RecipeIngre>();
+            OtherIngredients = new ObservableCollection<RecipeIngre>();
+            Steps = new ObservableCollection<RecipeIngre>();
 
             AddMainIngredients();
+            AddOtherIngredients();
+            AddSteps();
         }
 
         public INavigation Navigation { get; set; }
@@ -41,6 +51,10 @@ namespace CookEasy.ViewModels
         public Command AdvancedClicked { get; }
         public Command MainIngredientAdd { get; }
         public MvvmHelpers.Commands.Command<int> MainIngredientDelete { get; }
+        public Command OtherIngredientAdd { get; }
+        public MvvmHelpers.Commands.Command<int> OtherIngredientDelete { get; }
+        public Command StepAdd { get; }
+        public MvvmHelpers.Commands.Command<int> StepDelete { get; }
 
         private bool isEasy = true;
         private bool isAdvanced = false;
@@ -98,15 +112,9 @@ namespace CookEasy.ViewModels
             if (MainIngredients.Count == 0)
             {
                 MainIngredients.Add(new RecipeIngre { Placeholder = "100g cake flour" });
-                ReorderList();
                 MainIngredients.Add(new RecipeIngre { Placeholder = "4 medium sized eggs" });
-                ReorderList();
                 MainIngredients.Add(new RecipeIngre { Placeholder = "70g sugar" });
-                for (int i = 0; i < MainIngredients.Count; i++)
-                {
-                    MainIngredients[i].Order = i;
-                    MainIngredients[i].Placeholder = i.ToString();
-                }
+                ReorderList();
 
                 return;
             }
@@ -121,12 +129,64 @@ namespace CookEasy.ViewModels
             ReorderList();
         }
 
+        private void AddOtherIngredients()
+        {
+            if (OtherIngredients.Count == 0)
+            {
+                OtherIngredients.Add(new RecipeIngre { Placeholder = "2g baking powder" });
+                OtherIngredients.Add(new RecipeIngre { Placeholder = "1ml vanilla extract" });
+                ReorderList();
+
+                return;
+            }
+
+            OtherIngredients.Add(new RecipeIngre { Placeholder = "quantity/weight + ingredient" });
+            ReorderList();
+        }
+
+        private void DeleteOtherIngredient(int index)
+        {
+            OtherIngredients.RemoveAt(index);
+            ReorderList();
+        }
+
+        private void AddSteps()
+        {
+            if (Steps.Count == 0)
+            {
+                Steps.Add(new RecipeIngre { Placeholder = "Crack the eggs and separate the egg white and yolk. You may want to use a tool to do so. Put them in separated, dry and clean bowls.\n" });
+                Steps.Add(new RecipeIngre { Placeholder = "Take 50g sugar from the 70g sugar. Split them into 3 equal portions and start whipping the egg white. Add one portion of sugar after every 30 seconds of whipping.\n" });
+                Steps.Add(new RecipeIngre { Placeholder = "Now the whipped yolk should be very creamy. Put the rest 20g of sugar into egg yolk and whip it for 30 seconds. Then gently pour the egg yolk into the whipped egg white.\n" });
+                ReorderList();
+
+                return;
+            }
+
+            Steps.Add(new RecipeIngre { Placeholder = "Detailed explaination for each step" });
+            ReorderList();
+        }
+
+        private void DeleteStep(int index)
+        {
+            Steps.RemoveAt(index);
+            ReorderList();
+        }
+
         private void ReorderList()
         {
             for (int i = 0; i < MainIngredients.Count; i++)
             {
-                MainIngredients[i].Order = 0;
-                MainIngredients[i].Placeholder = i.ToString();
+                MainIngredients[i] = new RecipeIngre { Placeholder = MainIngredients[i].Placeholder, Content = MainIngredients[i].Content, Order = i };
+            }
+
+            for (int i = 0; i < OtherIngredients.Count; i++)
+            {
+                OtherIngredients[i] = new RecipeIngre { Placeholder = OtherIngredients[i].Placeholder, Content = OtherIngredients[i].Content, Order = i };
+            }
+
+            for (int i = 0; i < Steps.Count; i++)
+            {
+                Steps[i] = new RecipeIngre { Placeholder = Steps[i].Placeholder, Content = Steps[i].Content, Order = i };
             }
         }
 
