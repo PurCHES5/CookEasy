@@ -72,7 +72,11 @@
                                     TextDecorations="Underline" 
                                     VerticalTextAlignment="Center" 
                                     HorizontalTextAlignment="Center"
-                                    Margin="0,5"/>
+                                    Margin="0,5">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ForgotPasswordClicked}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
 
                             </StackLayout>
 

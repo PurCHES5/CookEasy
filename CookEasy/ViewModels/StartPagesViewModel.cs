@@ -53,6 +53,7 @@ namespace CookEasy.ViewModels
         private async void OnForgotPasswordClicked()
         {
             // verification
+            await Navigation.PushAsync(new ForgotPswdPage());
         }
 
         private async void OnGoToRegisterPage()
