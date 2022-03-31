@@ -46,9 +46,6 @@ namespace CookEasy.Views
             {
                 titleBarShadow.BlurRadius = 5;
             }
-
-            
-
         }
 
         private async void ImageButton_Clicked(object sender, EventArgs e)

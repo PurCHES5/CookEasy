@@ -4,8 +4,16 @@
              x:Class="CookEasy.Views.RecipePage"
              x:DataType="vm:RecipePageViewModel"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:vm="clr-namespace:CookEasy.ViewModels" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:vm="clr-namespace:CookEasy.ViewModels" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:models="clr-namespace:CookEasy.Models" xmlns:services="clr-namespace:CookEasy.Services"
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <services:BoolOpacityConverter x:Key="boolOpacityConventer" />
+            <services:OrderPlusOneConverter x:Key="orderPlusOne" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <Grid>
@@ -17,7 +25,8 @@
                         Source="TestRecipeImage.png"
                         DownsampleToViewSize="True">
                     </ffimageloading:CachedImage>
-                    <Label Text="Data_Missing"
+                    
+                    <Label Text="Title"
                            VerticalOptions="Center" 
                            FontSize="28"
                            MaxLines="3"
@@ -26,7 +35,68 @@
                            HorizontalOptions="Start"
                            Margin="20,10,0,0"
                            x:Name="Title"/>
-                    <Grid Margin="20,0,0,0" HeightRequest="50">
+                    
+                    <StackLayout HeightRequest="40" 
+                                Orientation="Horizontal" 
+                                VerticalOptions="End" 
+                                Margin="20,5">
+                        <yummy:PancakeView CornerRadius="30" 
+                                        BackgroundColor="White" 
+                                        IsVisible="{Binding EasyAvailable}">
+                            <yummy:PancakeView.Border>
+                                <yummy:Border Color="#00DC00" Thickness="{Binding DifficultyEasyBorder}"/>
+                            </yummy:PancakeView.Border>
+                            <StackLayout Orientation="Horizontal">
+                                <Ellipse Fill="#00DC00"
+                                        HeightRequest="30"
+                                        WidthRequest="30"
+                                        Aspect="Uniform"
+                                        Margin="5,0,0,0"/>
+                                <Label Text="Easy    " 
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="#007300" 
+                                    VerticalOptions="Center"
+                                    BackgroundColor="Transparent"/>
+                            </StackLayout>
+                        </yummy:PancakeView>
+                        <yummy:PancakeView CornerRadius="30" 
+                                        BackgroundColor="White" 
+                                        IsVisible="{Binding AdvancedAvailable}">
+                            <yummy:PancakeView.Border>
+                                <yummy:Border Color="#00A8DC" Thickness="{Binding DifficultyAdvancedBorder}"/>
+                            </yummy:PancakeView.Border>
+                            <StackLayout Orientation="Horizontal">
+                                <Ellipse Fill="#00A8DC"
+                                        HeightRequest="30"
+                                        WidthRequest="30"
+                                        Aspect="Uniform"
+                                        Margin="5,0,0,0"/>
+                                <Label Text="Advanced    " 
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="#000F73" 
+                                    VerticalOptions="Center"
+                                    BackgroundColor="Transparent"/>
+                            </StackLayout>
+                        </yummy:PancakeView>
+                    </StackLayout>
+
+                    <Label Text="{Binding CookTime}"
+                           VerticalOptions="Center" 
+                           FontSize="18"
+                           TextColor="Black"
+                           HorizontalOptions="Start"
+                           Margin="25,10,0,0"/>
+
+                    <Label Text="{Binding Portion}"
+                           VerticalOptions="Center" 
+                           FontSize="18"
+                           TextColor="Black"
+                           HorizontalOptions="Start"
+                           Margin="25,0,0,0"/>
+
+                    <Grid Margin="20,10,0,0" HeightRequest="50">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="170"/>
                             <ColumnDefinition Width="*"/>
@@ -50,10 +120,50 @@
                             Grid.Row="1"
                             BackgroundColor="Black"/>
                     </Grid>
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Grid Margin="20,0,0,0" HeightRequest="50">
+
+                    <Label Text="Main Ingredients"
+                           VerticalOptions="Center" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Start"
+                           Margin="20,0,0,0"/>
+                    <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding MainIngredients}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeIngre">
+                                <Label 
+                                    Text="{Binding Content}"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    Margin="25,0"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <Label Text="Other Ingredients"
+                           VerticalOptions="Center" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           HorizontalOptions="Start"
+                           Margin="20,20,0,0"/>
+                    <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding OtherIngredients}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeIngre">
+                                <Label 
+                                    Text="{Binding Content}"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    Margin="25,0"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <Grid Margin="20,20,0,0" HeightRequest="50">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="90"/>
                             <ColumnDefinition Width="*"/>
@@ -77,28 +187,58 @@
                             Grid.Row="1"
                             BackgroundColor="Black"/>
                     </Grid>
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏!!!" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
-                    <Label Text="傻逼刘灏" TextColor="#99000000" FontSize="Large" />
+
+                    <FlexLayout
+                    Direction="Column"
+                    BindableLayout.ItemsSource="{Binding Steps}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeIngre">
+                                <Grid 
+                                ColumnSpacing="0" 
+                                RowSpacing="0" 
+                                Margin="20,3">
+                                    <yummy:PancakeView
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    CornerRadius="15"
+                                    Grid.Column="0">
+                                        <yummy:PancakeView.Shadow>
+                                            <yummy:DropShadow BlurRadius="3"/>
+                                        </yummy:PancakeView.Shadow>
+                                        <Label
+                                            Text="{Binding Content}"
+                                            Margin="20,10,10,10"
+                                            CharacterSpacing="0.75"
+                                            TextColor="Black"
+                                            FontSize="18"
+                                        />
+                                    </yummy:PancakeView>
+                                    <yummy:PancakeView 
+                                        BackgroundColor="White" 
+                                        Grid.Column="0"
+                                        WidthRequest="20"
+                                        HeightRequest="20"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start"
+                                        CornerRadius="30">
+                                        <yummy:PancakeView.Border>
+                                            <yummy:Border Color="Black" Thickness="3"/>
+                                        </yummy:PancakeView.Border>
+                                        <Label 
+                                        Text="{Binding Order, Converter={StaticResource orderPlusOne}}" 
+                                        FontSize="15" 
+                                        FontAttributes="Bold" 
+                                        TextColor="Black" 
+                                        HorizontalOptions="Center" 
+                                        VerticalOptions="Center"
+                                        Margin="-1"
+                                        />
+                                    </yummy:PancakeView>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                    
                 </StackLayout>
             </ScrollView>
 
@@ -111,8 +251,8 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
                     </Grid.ColumnDefinitions>
                     <ImageButton Source="ic_arrow_back_24px" 
                                  Clicked="ImageButton_Clicked"

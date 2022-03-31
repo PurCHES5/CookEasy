@@ -67,5 +67,21 @@ namespace CookEasy.Views
 
             upload_image.Source = ImageSource.FromFile(file.Path);
         }
+
+        private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            var scrollView = sender as ScrollView;
+
+            var TransY = e.ScrollY;
+
+            if (TransY < 20)
+            {
+                titleBarShadow.BlurRadius = (float)TransY / 4;
+            }
+            else
+            {
+                titleBarShadow.BlurRadius = 5;
+            }
+        }
     }
 }
