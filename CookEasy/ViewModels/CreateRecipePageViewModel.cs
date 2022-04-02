@@ -11,6 +11,8 @@ using MvvmHelpers.Commands;
 using CookEasy.Models;
 using System.Collections.ObjectModel;
 using Plugin.Media;
+using CookEasy.Services;
+using Acr.UserDialogs;
 
 namespace CookEasy.ViewModels
 {
@@ -32,10 +34,13 @@ namespace CookEasy.ViewModels
             OtherIngredientDelete = new MvvmHelpers.Commands.Command<int>(DeleteOtherIngredient);
             StepAdd = new Command(AddSteps);
             StepDelete = new MvvmHelpers.Commands.Command<int>(DeleteStep);
+            UploadImage = new Command(ChooseRecipePhoto);
 
             MainIngredients = new ObservableCollection<RecipeIngre>();
             OtherIngredients = new ObservableCollection<RecipeIngre>();
             Steps = new ObservableCollection<RecipeIngre>();
+
+            recipeImage = "upload_image.png";
 
             AddMainIngredients();
             AddOtherIngredients();
@@ -56,6 +61,17 @@ namespace CookEasy.ViewModels
         public Command StepAdd { get; }
         public MvvmHelpers.Commands.Command<int> StepDelete { get; }
 
+        private ImageSource recipeImage;
+        public ImageSource RecipeImage { 
+            get => recipeImage; 
+            set 
+            {
+                if (value == recipeImage)
+                    return;
+                recipeImage = value;
+                OnPropertyChanged(); 
+            } 
+        }
         private bool isEasy = true;
         private bool isAdvanced = false;
         private int difficulty;
@@ -187,6 +203,76 @@ namespace CookEasy.ViewModels
             for (int i = 0; i < Steps.Count; i++)
             {
                 Steps[i] = new RecipeIngre { Placeholder = Steps[i].Placeholder, Content = Steps[i].Content, Order = i };
+            }
+        }
+
+        private async void ChooseRecipePhoto()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await UserDialogs.Instance.AlertAsync("No Camera", ":( No camera available.", "OK");
+                return;
+            }
+
+            string act = await UserDialogs.Instance.ActionSheetAsync("Choose or take photo?", "Cancel", null, null, new string[2] { "Take a photo", "Choose from device" });
+
+            if (act == null || act == "Cancel")
+                return;
+
+            Plugin.Media.Abstractions.MediaFile file = null;
+
+            if (act == "Take a photo")
+            {
+                file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    SaveToAlbum = true,
+                    Name = "recipe_photo.jpg",
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Large,
+                    CompressionQuality = 90
+                });
+            }
+            else
+            {
+                file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Large,
+                    CompressionQuality = 90
+                });
+            }
+
+            if (file == null)
+                return;
+
+            var stream = file.GetStream();
+
+            RecipeImage = ImageSource.FromStream(() =>
+            {
+                return stream;
+            });
+
+            var loadingDialog = UserDialogs.Instance.Loading("Uploading Photo...", () =>
+            {
+                UserDialogs.Instance.HideLoading();
+                UserDialogs.Instance.AlertAsync("Upload Cancelled", "Error in uploading recipe photo", "OK");
+                RecipeImage = "upload_image.png";       // reset the image in case the user thought they already uploaded the photo
+                return;
+            }, "Cancel", true, MaskType.Gradient);
+
+            string result = await FirebaseManager.Current.UploadToStorage(file, "recipe");
+
+            loadingDialog.Hide();
+
+            if (!result.StartsWith("https://firebasestorage.googleapis.com/"))
+            {
+                await UserDialogs.Instance.AlertAsync(result, "Error in uploading recipe photo", "OK");
+                RecipeImage = "upload_image.png";       // reset the image in case the user thought they already uploaded the photo
+            }
+            else
+            {
+                // provide positive feedback
+                await UserDialogs.Instance.AlertAsync("Your recipe photo has been successfully uploaded to cloud!", "Upload Image", "Great!");
             }
         }
 

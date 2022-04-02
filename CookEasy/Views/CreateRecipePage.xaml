@@ -29,11 +29,10 @@
                     <ffimageloading:CachedImage 
                     Aspect="AspectFill"
                     HeightRequest="300"
-                    Source="upload_image.png"
-                    x:Name="upload_image"
+                    Source="{Binding RecipeImage}"
                     DownsampleToViewSize="True">
                         <ffimageloading:CachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnUploadImage"/>
+                            <TapGestureRecognizer Command="{Binding UploadImage}"/>
                         </ffimageloading:CachedImage.GestureRecognizers>
                     </ffimageloading:CachedImage>
                 </yummy:PancakeView>

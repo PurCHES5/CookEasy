@@ -18,7 +18,6 @@ namespace CookEasy.Views
         {
             InitializeComponent();
             BindingContext = new RecipePageViewModel(Navigation);
-            Title.Text = recipeRecomms.Name;
             TitleLabel.TextColor = Color.FromRgba(0.0, 0.0, 0.0, 0);
         }
 

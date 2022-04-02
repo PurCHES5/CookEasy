@@ -46,8 +46,12 @@
                                     <yummy:PancakeView BackgroundColor="#c9eff5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_perm_identity_24px.png" Aspect="AspectFit" Margin="8"/>
                                     </yummy:PancakeView>
-
-                                    <Entry Placeholder="Username" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                    <Entry Placeholder="Username" 
+                                           TextColor="Black" 
+                                           FontAttributes="None" 
+                                           HorizontalOptions="FillAndExpand" 
+                                           Margin="0,0,20,0" 
+                                           Text="{Binding LoginEmail}"/>
                                 </StackLayout>
                             </Frame>
 
@@ -56,13 +60,17 @@
                                     <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_lock_24px" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-
-                                    <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                    <Entry Placeholder="Password" 
+                                           IsPassword="True" 
+                                           TextColor="Black" 
+                                           FontAttributes="None" 
+                                           HorizontalOptions="FillAndExpand" 
+                                           Margin="0,0,20,0" 
+                                           Text="{Binding LoginPassword}"/>
                                 </StackLayout>
                             </Frame>
 
-                            <StackLayout  Orientation="Horizontal">
-
+                            <StackLayout  Orientation="Horizontal" Margin="0,5,0,20">
                                 <Label 
                                     Text="Forgot Password?" 
                                     TextColor="Black" 
@@ -71,39 +79,52 @@
                                     FontSize="16" 
                                     TextDecorations="Underline" 
                                     VerticalTextAlignment="Center" 
-                                    HorizontalTextAlignment="Center"
-                                    Margin="0,5">
+                                    HorizontalTextAlignment="Center">
                                     <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ForgotPasswordClicked}"/>
+                                        <TapGestureRecognizer Command="{Binding GoToForgotPasswordPage}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
-
                             </StackLayout>
-
-                            <Button Text="LOG IN" BackgroundColor="#FF9C54" TextColor="White" CornerRadius="30" Command="{Binding LoginClicked}"/>
-
-                            <Grid>
-                                <BoxView BackgroundColor="DarkGray" HeightRequest="2" WidthRequest="150"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <yummy:PancakeView BackgroundColor="White" HeightRequest="45" WidthRequest="45" CornerRadius="45" Margin="0" HorizontalOptions="Center" Padding="0">
-                                    <yummy:PancakeView.Border>
-                                        <yummy:Border Color="DarkGray" Thickness="4"/>
-                                    </yummy:PancakeView.Border>
-                                    <Label Text="OR" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                                </yummy:PancakeView>
-                            </Grid>
-
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Source="FacebookLogo.png" Grid.Column="0" Margin="5,0" />
-                                <Image Source="GoogleLogo.png" Grid.Column="1" HeightRequest="50" Margin="5,0"/>
-                            </Grid>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
             </StackLayout>
+            
+            <Button 
+                Text="LOG IN" 
+                BackgroundColor="#FF9C54" 
+                TextColor="White" 
+                WidthRequest="200" 
+                HorizontalOptions="Center" 
+                CornerRadius="30" 
+                Margin="0, -30"
+                Command="{Binding LoginClicked}"/>
+            
+            <Grid Margin="60,60,60,0" HorizontalOptions="Center" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="White" HeightRequest="2" VerticalOptions="Center" Grid.Column="0"/>
+                <yummy:PancakeView BackgroundColor="Transparent" HeightRequest="50" WidthRequest="50" CornerRadius="50" Margin="0" HorizontalOptions="Center" Padding="0" Grid.Column="1">
+                    <yummy:PancakeView.Border>
+                        <yummy:Border Color="White" Thickness="4"/>
+                    </yummy:PancakeView.Border>
+                    <Label Text="OR" TextColor="White" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                </yummy:PancakeView>
+                <BoxView BackgroundColor="White" HeightRequest="2" VerticalOptions="Center" Grid.Column="2"/>
+            </Grid>
+
+            <Grid HorizontalOptions="Center" Margin="30, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Source="FacebookLogo.png" Grid.Column="0" Margin="5,0" BackgroundColor="Transparent" Command="{Binding FacebookLoginClicked}"/>
+                <ImageButton Source="GoogleLogo.png" Grid.Column="1" HeightRequest="50" Margin="5,0" BackgroundColor="Transparent" Command="{Binding GoogleLoginClicked}"/>
+            </Grid>
+            
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,15">
                 <Label Text="Don't have an account?" TextColor="GhostWhite" FontSize="16">
                     <Label.GestureRecognizers>

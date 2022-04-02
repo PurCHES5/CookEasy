@@ -28,35 +28,51 @@
                 <StackLayout Padding="0" Margin="20,100,20,0" HorizontalOptions="FillAndExpand">
                     <Label Text="Reset Password" TextColor="White" CharacterSpacing="0.5" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="40" Margin="0,0,0,60"/>
                     <Frame BackgroundColor="White" HasShadow="True" Padding="0" Margin="0" CornerRadius="20">
-                        <StackLayout Padding="0" Margin="15,15,15,30">
+                        <StackLayout Padding="0" Margin="15,20,15,40">
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame BackgroundColor="#c9eff5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_perm_identity_24px.png" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-                                    <Entry Placeholder="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                    <Entry 
+                                        Placeholder="Email"
+                                        TextColor="Black" 
+                                        FontAttributes="None" 
+                                        HorizontalOptions="FillAndExpand" 
+                                        Margin="0,0,20,0"
+                                        Text="{Binding ForgotPasswordEmail}"/>
                                 </StackLayout>
                             </Frame>
-
-                           
-
-
+                            
+                            <Label 
+                                Text="Back to Login" 
+                                TextColor="Black" 
+                                FontAttributes="Bold" 
+                                HorizontalOptions="EndAndExpand" 
+                                FontSize="16" 
+                                TextDecorations="Underline" 
+                                VerticalTextAlignment="Center" 
+                                HorizontalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToLoginPage}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                     </Frame>
-
-                    <Button 
-                        Text="Reset" 
-                        BackgroundColor="#FF9C54" 
-                        TextColor="White" 
-                        CornerRadius="30" 
-                        Command="{Binding RegisterClicked}" 
-                        WidthRequest="200" 
-                        HeightRequest="50"
-                        HorizontalOptions="CenterAndExpand"
-                        Margin="0,-30"/>
-
                 </StackLayout>
             </Grid>
+            
+            <Button 
+                Text="Reset" 
+                BackgroundColor="#FF9C54" 
+                TextColor="White" 
+                CornerRadius="30" 
+                Command="{Binding ForgotPasswordClicked}" 
+                WidthRequest="200" 
+                HeightRequest="50"
+                HorizontalOptions="CenterAndExpand"
+                Margin="0,-30"/>
+            
         </StackLayout>
     </Grid>
 </ContentPage>

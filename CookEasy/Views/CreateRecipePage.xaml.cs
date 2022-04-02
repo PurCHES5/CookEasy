@@ -1,4 +1,6 @@
-﻿using CookEasy.ViewModels;
+﻿using Acr.UserDialogs;
+using CookEasy.Services;
+using CookEasy.ViewModels;
 using FFImageLoading;
 using Plugin.Media;
 using System;
@@ -26,46 +28,6 @@ namespace CookEasy.Views
                 ExecuteCallbacksOnUIThread = true
             };
             ImageService.Instance.Initialize(config);
-        }
-
-        async void OnUploadImage(object sender, EventArgs e)
-        {
-            await CrossMedia.Current.Initialize();
-
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-            {
-                await DisplayAlert("No Camera", ":( No camera available.", "OK");
-                return;
-            }
-
-            string act = await DisplayActionSheet("Choose or take photo?", "Cancel", null, new string[2] { "Take a photo", "Choose from device" });
-
-            if (act == null || act == "Cancel")
-                return;
-
-            Plugin.Media.Abstractions.MediaFile file = null;
-
-            if (act == "Take a photo")
-            {
-                file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                {
-                    Directory = "Sample",
-                    Name = "test.jpg"
-                });
-            }
-            else
-            {
-                file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-                {
-                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Large,
-                    CompressionQuality = 90
-                });
-            }
-
-            if (file == null)
-                return;
-
-            upload_image.Source = ImageSource.FromFile(file.Path);
         }
 
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)

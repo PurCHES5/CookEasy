@@ -34,7 +34,7 @@
                                     <Frame BackgroundColor="#c9eff5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_perm_identity_24px.png" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-                                    <Entry Placeholder="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                    <Entry Placeholder="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" Text="{Binding RegisterEmail}"/>
                                 </StackLayout>
                             </Frame>
 
@@ -43,7 +43,7 @@
                                     <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_lock_24px" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-                                    <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                    <Entry Placeholder="Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" Text="{Binding RegisterPassword}"/>
                                 </StackLayout>
                             </Frame>
 
@@ -52,30 +52,30 @@
                                     <Frame BackgroundColor="#2274b3" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_lock_24px" Aspect="AspectFit" Margin="8"/>
                                     </Frame>
-                                    <Entry Placeholder="Confirm Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                    <Entry Placeholder="Confirm Password" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0" Text="{Binding RegisterConfirmPassword}"/>
                                 </StackLayout>
                             </Frame>
 
                             <StackLayout  Orientation="Horizontal" Margin="0,10">
-                                <CheckBox IsChecked="False" Color="Red" />
+                                <CheckBox IsChecked="{Binding RegisterChecked}" Color="Red" />
                                 <Label Text="By clicking Register, you agree to CookEasy's User Agreement and Privacy Policy" TextColor="Black" FontSize="12.5" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    
-                    <Button 
-                        Text="Register" 
-                        BackgroundColor="#FF9C54" 
-                        TextColor="White" 
-                        CornerRadius="30" 
-                        Command="{Binding RegisterClicked}" 
-                        WidthRequest="200" 
-                        HeightRequest="50"
-                        HorizontalOptions="CenterAndExpand"
-                        Margin="0,-30"/>
-                    
                 </StackLayout>
             </Grid>
+            
+            <Button 
+                Text="Register" 
+                BackgroundColor="#FF9C54" 
+                TextColor="White" 
+                CornerRadius="30" 
+                Command="{Binding RegisterClicked}" 
+                WidthRequest="200" 
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Margin="0,-30"/>
+            
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,15">
                 <Label Text="Already have an account?" TextColor="GhostWhite" FontSize="16">
                     <Label.GestureRecognizers>

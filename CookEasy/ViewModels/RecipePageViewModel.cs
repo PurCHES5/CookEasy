@@ -7,6 +7,8 @@ using CookEasy.Views;
 using System.Threading.Tasks;
 using CookEasy.Models;
 using System.Collections.ObjectModel;
+using CookEasy.Services;
+using Acr.UserDialogs;
 
 namespace CookEasy.ViewModels
 {
@@ -22,33 +24,34 @@ namespace CookEasy.ViewModels
             OtherIngredients = new ObservableCollection<RecipeIngre>();
             Steps = new ObservableCollection<RecipeIngre>();
 
-            Difficulty = 1;
-            DifficultiesAvail = 2;
-            cookTime = "Cook time: 1 hr 10 mins";
-            portion = "Portion: 2 people";
-
-            MainIngredients.Add(new RecipeIngre { Content = "Cream" });
-
-            OtherIngredients.Add(new RecipeIngre { Content = "Sugar" });
-
-            Steps.Add(new RecipeIngre { Content = "Crack the eggs and separate the egg white and yolk. You may want to use a tool to do so. Put them in separated, dry and clean bowls." });
+            GetRecipeData();
         }
 
         public INavigation Navigation { get; set; }
-        public ICommand BackButtonClick { get; }
+        public Command BackButtonClick { get; }
 
         public ObservableCollection<RecipeIngre> MainIngredients { get; set; }
         public ObservableCollection<RecipeIngre> OtherIngredients { get; set; }
         public ObservableCollection<RecipeIngre> Steps { get; set; }
 
+        private string recipeTitle;
+        public string RecipeTitle {
+            get => recipeTitle;
+            set
+            {
+                recipeTitle = value;
+                OnPropertyChanged();
+            }
+        }
+
         /// <summary>
         /// 0 = Easy, 1 = Advanced
         /// </summary>
-        public int Difficulty { get; set; }
+        private int Difficulty { get; set; }
         /// <summary>
         /// 0 = Easy, 1 = Advanced, 2 = Both
         /// </summary>
-        public int DifficultiesAvail { get; set; }
+        private int DifficultiesAvail { get; set; }
         public bool EasyAvailable       // these codes are for easier Binding in xaml
         {
             get
@@ -78,32 +81,85 @@ namespace CookEasy.ViewModels
             }
         }
 
-        public string cookTime { get; set; }
+        private string cookTime;
         public string CookTime
         {
             get
             {
                 return cookTime;
             }
+            set
+            {
+                cookTime = value;
+                OnPropertyChanged();
+            }
         }
 
-        public string portion { get; set; }
+        private string portion;
         public string Portion
         {
             get
             {
                 return portion;
             }
+            set
+            {
+                portion = value;
+                OnPropertyChanged();
+            }
         }
 
-        async void OnGoToRecipe()
+        private Uri recipeImage;
+        public Uri RecipeImage
         {
-            await Navigation.PushAsync(new SearchPage());
+            get
+            {
+                return recipeImage;
+            }
+            set
+            {
+                recipeImage = value;
+                OnPropertyChanged();
+            }
         }
 
         async void OnBackButtonClicked()
         {
-            await Navigation.PushAsync(new SearchPage());
+            await Navigation.PopAsync();
+        }
+
+        private async void GetRecipeData()
+        {
+            var loadingDialog = UserDialogs.Instance.Loading("", show: true, maskType: MaskType.Gradient);
+            RecipeDetailData data = (RecipeDetailData)await FirebaseManager.Current.ReadRecipe("000000001");
+
+            RecipeTitle = data.RecipeTitle;
+            CookTime = "Cook time: " + data.CookTime;
+            Portion = "Portion: " + data.Portion;
+            RecipeImage = new Uri(data.ImageUri, UriKind.Absolute);
+            DifficultiesAvail = data.DifficultiesAvail;
+            Difficulty = data.Difficulty;
+            string[] mainIngre = data.MainIngre.Split('/');
+            string[] otherIngre = data.OtherIngre.Split('/');
+            string[] steps = data.Steps.Split('/');
+
+            foreach (string ingre in mainIngre)
+            {
+                MainIngredients.Add(new RecipeIngre { Content = ingre });
+            }
+
+            foreach (string ingre in otherIngre)
+            {
+                OtherIngredients.Add(new RecipeIngre { Content = ingre });
+            }
+
+            for (int i = 0; i < steps.Length; i++)
+            {
+                Steps.Add(new RecipeIngre { Content = steps[i], Order = i });
+            }
+
+            await Task.Delay(1000);
+            loadingDialog.Hide();
         }
     }
 }

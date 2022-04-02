@@ -22,19 +22,18 @@
                     <ffimageloading:CachedImage 
                         Aspect="AspectFill"
                         HeightRequest="300"
-                        Source="TestRecipeImage.png"
+                        Source="{Binding RecipeImage}"
                         DownsampleToViewSize="True">
                     </ffimageloading:CachedImage>
                     
-                    <Label Text="Title"
+                    <Label Text="{Binding RecipeTitle}"
                            VerticalOptions="Center" 
                            FontSize="28"
                            MaxLines="3"
                            FontAttributes="Bold"
                            TextColor="Black"
                            HorizontalOptions="Start"
-                           Margin="20,10,0,0"
-                           x:Name="Title"/>
+                           Margin="20,10,0,0"/>
                     
                     <StackLayout HeightRequest="40" 
                                 Orientation="Horizontal" 
@@ -137,7 +136,7 @@
                                     Text="{Binding Content}"
                                     TextColor="Black"
                                     FontSize="18"
-                                    Margin="25,0"/>
+                                    Margin="25,5"/>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
@@ -158,7 +157,7 @@
                                     Text="{Binding Content}"
                                     TextColor="Black"
                                     FontSize="18"
-                                    Margin="25,0"/>
+                                    Margin="25,5"/>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
@@ -189,14 +188,14 @@
                     </Grid>
 
                     <FlexLayout
-                    Direction="Column"
-                    BindableLayout.ItemsSource="{Binding Steps}">
+                        Direction="Column"
+                        BindableLayout.ItemsSource="{Binding Steps}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:RecipeIngre">
                                 <Grid 
-                                ColumnSpacing="0" 
-                                RowSpacing="0" 
-                                Margin="20,3">
+                                    ColumnSpacing="0" 
+                                    RowSpacing="0" 
+                                    Margin="20,10">
                                     <yummy:PancakeView
                                     BackgroundColor="White"
                                     HorizontalOptions="FillAndExpand"
@@ -255,11 +254,11 @@
                         <ColumnDefinition Width="25"/>
                     </Grid.ColumnDefinitions>
                     <ImageButton Source="ic_arrow_back_24px" 
-                                 Clicked="ImageButton_Clicked"
+                                 Command="{Binding BackButtonClick}"
                                  HorizontalOptions="Start" 
                                  BackgroundColor="#F1F1F1"
                                  Grid.Column="0"/>
-                    <Label Text="Keny Kiambu Handege"
+                    <Label Text="{Binding RecipeTitle}"
                            TextColor="Black"
                            FontSize="22"
                            LineBreakMode="TailTruncation"

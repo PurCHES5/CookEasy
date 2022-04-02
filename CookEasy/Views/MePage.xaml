@@ -20,10 +20,10 @@
                     HorizontalOptions="CenterAndExpand"
                     BackgroundColor="AliceBlue">
                     <ffimageloading:CachedImage 
-                    Source="logo.png" 
-                    DownsampleToViewSize="True"
-                    Aspect="AspectFill"
-                    x:Name="avatar_image">
+                        Source="default_avatar.png" 
+                        DownsampleToViewSize="True"
+                        Aspect="AspectFill"
+                        x:Name="avatar_image">
                     <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnUploadImage"/>
                     </ffimageloading:CachedImage.GestureRecognizers>
