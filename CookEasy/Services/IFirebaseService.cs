@@ -18,10 +18,18 @@ namespace CookEasy.Services
 
         Task<string> SignInEmail(string email, string password);
 
-        Task<string> UploadToStorage(Plugin.Media.Abstractions.MediaFile file, string uploadType);
+        Task<string> UploadToStorage(Plugin.Media.Abstractions.MediaFile file, string uploadType, string uploadTime = null);
 
         Task<string> GetAvatarPhoto();
 
         Task<object> ReadRecipe(string recipeId);
+
+        Task<string> WriteRecipe(object recipeData, string uploadTime);
+
+        Task<object> ReadRecipeProps(int limit);
+
+        Task<object> ReadRecipeProps(string queryText, int limit);
+
+        string GetEmail();
     }
 }

@@ -18,6 +18,19 @@
                            FontSize="20" 
                            TextColor="Black" 
                            Margin="15,15,0,0"></Label>
+                    <Label Text="Chocolate" 
+                           FontSize="15" 
+                           TextColor="Black" 
+                           Margin="20,10,0,0"></Label>
+                    <Label Text="Baked" 
+                           FontSize="15" 
+                           TextColor="Black" 
+                           Margin="20,10,0,0"></Label>
+                    <Label Text="Fish" 
+                           FontSize="15" 
+                           TextColor="Black" 
+                           Margin="20,10,0,0"></Label>
+
                     <CollectionView
                         Margin="0,10,0,0"
                         BackgroundColor="Transparent"

@@ -39,13 +39,11 @@ namespace CookEasy.Views
 
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var recipe = e.CurrentSelection.FirstOrDefault() as RecipeProp;
-            if (recipe == null)
+            string recipeId = (e.CurrentSelection.FirstOrDefault() as RecipeProp).RecipeId;
+            if (recipeId == null)
                 return;
 
-            await Navigation.PushAsync(new RecipePage(recipe));
-
-            ((CollectionView)sender).SelectedItem = null;
+            await Navigation.PushAsync(new RecipePage(recipeId));
         }
     }
 }

@@ -9,6 +9,7 @@ using CookEasy.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Acr.UserDialogs;
+using Xamarin.Essentials;
 
 namespace CookEasy.Views
 {
@@ -30,6 +31,8 @@ namespace CookEasy.Views
             {
                 avatar_image.Source = ImageSource.FromUri(new Uri(photoUri, UriKind.Absolute));
             }
+
+            Username.Text = FirebaseManager.Current.GetEmail();
         }
 
         async void OnUploadImage(object sender, EventArgs e)
@@ -109,6 +112,11 @@ namespace CookEasy.Views
                 Navigation.RemovePage(Navigation.NavigationStack[0]);
             }
             Navigation.PushAsync(new LoginPage());
+        }
+
+        private async void PrivacyPolicy_Tapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://www.termsfeed.com/blog/privacy-policies-vs-terms-conditions/", BrowserLaunchMode.SystemPreferred);
         }
     }
 }

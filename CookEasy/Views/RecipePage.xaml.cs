@@ -14,8 +14,11 @@ namespace CookEasy.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecipePage : ContentPage
     {
-        public RecipePage(RecipeProp recipeRecomms)
+        public static string recipeID;
+
+        public RecipePage(string recipeId)
         {
+            recipeID = recipeId;
             InitializeComponent();
             BindingContext = new RecipePageViewModel(Navigation);
             TitleLabel.TextColor = Color.FromRgba(0.0, 0.0, 0.0, 0);

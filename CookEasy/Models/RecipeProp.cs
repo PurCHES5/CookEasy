@@ -6,6 +6,7 @@ namespace CookEasy.Models
 {
     public class RecipeProp
     {
+        public string RecipeId { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public int Likes { get; set; }

@@ -10,11 +10,13 @@ using MvvmHelpers;
 using MvvmHelpers.Commands;
 using CookEasy.Models;
 using System.Collections.ObjectModel;
+using CookEasy.Services;
 
 namespace CookEasy.ViewModels
 {
     public class SearchResultPageViewModel : BaseViewModel
     {
+        public static string queryText;
         public ObservableCollection<RecipeProp> RecipeRusult { get; set; }
 
         public SearchResultPageViewModel(INavigation navigation)
@@ -61,17 +63,34 @@ namespace CookEasy.ViewModels
             IsBusy = false;
         }
 
-        private void LoadCategoryRecomms()
+        private async void LoadCategoryRecomms()
         {
-            var image = "mashedpotato.jpeg";
-            RecipeRusult.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, Likes = 129 });
-            RecipeRusult.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, Likes = 82 });
-            RecipeRusult.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2, Likes = 14 });
-            RecipeRusult.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image, Difficulty = 1, DifficultiesAvail = 1 });
-            RecipeRusult.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, Likes = 129 });
-            RecipeRusult.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, Likes = 82 });
-            RecipeRusult.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2, Likes = 14 });
-            RecipeRusult.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image, Difficulty = 1, DifficultiesAvail = 1 });
+            var result = await FirebaseManager.Current.ReadRecipeProps(queryText, RecipeRusult.Count + 4);
+
+            try
+            {
+                List<RecipePropData> datas = (List<RecipePropData>)result;
+
+                if (((List<RecipePropData>)result).Count <= RecipeRusult.Count)
+                    return;
+
+                if (((List<RecipePropData>)result).Count > RecipeRusult.Count + 4)
+                {
+                    for (int i = 0; i < RecipeRusult.Count + 4; i++)
+                    {
+                        datas.RemoveRange(0, RecipeRusult.Count + 4);
+                    }
+                }
+
+                foreach (var data in datas)
+                {
+                    RecipeRusult.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId });
+                }
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

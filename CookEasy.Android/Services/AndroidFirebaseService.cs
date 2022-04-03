@@ -46,10 +46,10 @@ namespace CookEasy.Droid.Services
             return await mainActivity.LoginWithEmailPassword(email, password);
         }
 
-        public async Task<string> UploadToStorage(Plugin.Media.Abstractions.MediaFile file, string uploadType)
+        public async Task<string> UploadToStorage(Plugin.Media.Abstractions.MediaFile file, string uploadType, string uploadTime = null)
         {
             MainActivity mainActivity = new MainActivity();
-            return await mainActivity.UploadToStorage(file, uploadType);
+            return await mainActivity.UploadToStorage(file, uploadType, uploadTime);
         }
 
         public async Task<string> GetAvatarPhoto()
@@ -62,6 +62,30 @@ namespace CookEasy.Droid.Services
         {
             MainActivity mainActivity = new MainActivity();
             return await mainActivity.ReadRecipe(recipeId);
+        }
+
+        public async Task<string> WriteRecipe(object recipeData, string uploadTime)
+        {
+            MainActivity mainActivity = new MainActivity();
+            return await mainActivity.WriteRecipe(recipeData, uploadTime);
+        }
+
+        public async Task<object> ReadRecipeProps(int limit)
+        {
+            MainActivity mainActivity = new MainActivity();
+            return await mainActivity.ReadRecipeProp(limit);
+        }
+
+        public async Task<object> ReadRecipeProps(string queryText, int limit)
+        {
+            MainActivity mainActivity = new MainActivity();
+            return await mainActivity.ReadRecipeProp(queryText, limit);
+        }
+
+        public string GetEmail()
+        {
+            MainActivity mainActivity = new MainActivity();
+            return mainActivity.GetEmail();
         }
     }
 }

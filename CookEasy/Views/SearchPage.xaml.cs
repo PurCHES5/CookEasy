@@ -44,8 +44,6 @@ namespace CookEasy.Views
                 return;
 
             await Navigation.PushAsync(new SearchResultPage(recipe.Name));
-
-            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

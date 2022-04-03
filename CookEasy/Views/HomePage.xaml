@@ -192,7 +192,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
-                    <Label Text="Western" FontAttributes="Bold" FontSize="24" TextColor="Black" Margin="15,0,0,0"></Label>
+                    <Label Text="Easy to cook" FontAttributes="Bold" FontSize="24" TextColor="Black" Margin="15,0,0,0"></Label>
 
                     <CollectionView
                         Margin="0,-5,0,0"

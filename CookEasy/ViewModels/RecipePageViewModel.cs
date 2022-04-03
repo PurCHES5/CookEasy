@@ -58,12 +58,20 @@ namespace CookEasy.ViewModels
             {
                 return DifficultiesAvail == 0 || DifficultiesAvail == 2;
             }
+            set
+            {
+                OnPropertyChanged();
+            }
         }
         public bool AdvancedAvailable
         {
             get
             {
                 return DifficultiesAvail >= 1;
+            }
+            set
+            {
+                OnPropertyChanged();
             }
         }
         public int DifficultyEasyBorder
@@ -72,12 +80,20 @@ namespace CookEasy.ViewModels
             {
                 return Difficulty == 0 ? 6 : 1;
             }
+            set
+            {
+                OnPropertyChanged();
+            }
         }
         public int DifficultyAdvancedBorder
         {
             get
             {
                 return Difficulty == 1 ? 6 : 1;
+            }
+            set
+            {
+                OnPropertyChanged();
             }
         }
 
@@ -131,7 +147,7 @@ namespace CookEasy.ViewModels
         private async void GetRecipeData()
         {
             var loadingDialog = UserDialogs.Instance.Loading("", show: true, maskType: MaskType.Gradient);
-            RecipeDetailData data = (RecipeDetailData)await FirebaseManager.Current.ReadRecipe("000000001");
+            RecipeDetailData data = (RecipeDetailData)await FirebaseManager.Current.ReadRecipe(RecipePage.recipeID);
 
             RecipeTitle = data.RecipeTitle;
             CookTime = "Cook time: " + data.CookTime;
@@ -139,6 +155,32 @@ namespace CookEasy.ViewModels
             RecipeImage = new Uri(data.ImageUri, UriKind.Absolute);
             DifficultiesAvail = data.DifficultiesAvail;
             Difficulty = data.Difficulty;
+            if (Difficulty == 0)
+            {
+                DifficultyEasyBorder = 6;
+                DifficultyAdvancedBorder = 1;
+            }
+            else
+            {
+                DifficultyEasyBorder = 1;
+                DifficultyAdvancedBorder = 6;
+            }
+
+            if (DifficultiesAvail == 0)
+            {
+                EasyAvailable = true;
+                AdvancedAvailable = false;
+            }
+            else if(DifficultiesAvail == 1)
+            {
+                EasyAvailable = false;
+                AdvancedAvailable = true;
+            }
+            else
+            {
+                EasyAvailable = true;
+                AdvancedAvailable = true;
+            }
             string[] mainIngre = data.MainIngre.Split('/');
             string[] otherIngre = data.OtherIngre.Split('/');
             string[] steps = data.Steps.Split('/');

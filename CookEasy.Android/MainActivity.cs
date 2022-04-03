@@ -141,7 +141,7 @@ namespace CookEasy.Droid
             }
         }
 
-        public async Task<string> UploadToStorage(Plugin.Media.Abstractions.MediaFile file, string uploadType)
+        public async Task<string> UploadToStorage(Plugin.Media.Abstractions.MediaFile file, string uploadType, string uploadTime = null)
         {
             FirebaseStorage storage = FirebaseStorage.Instance;
             StorageReference storageRef = storage.Reference;
@@ -153,7 +153,7 @@ namespace CookEasy.Droid
             }
             else if (uploadType == "recipe")
             {
-                contentRef = storageRef.Child($"recipes/{mAuth.CurrentUser.Uid}/image.jpg");
+                contentRef = storageRef.Child($"recipes/{mAuth.CurrentUser.Uid}/{uploadTime}.jpg");
             }
 
             var stream = file.GetStream();
@@ -190,9 +190,9 @@ namespace CookEasy.Droid
         {
             DatabaseReference database = FirebaseDatabase.Instance.Reference;
 
-            var data = await database.Child("recipes").Child(recipeId).Get();
+            var data = (DataSnapshot)await database.Child("recipes").Child(recipeId).Get();
 
-            HashMap hashMap = ((DataSnapshot)data).Value.JavaCast<HashMap>();
+            HashMap hashMap = data.Value.JavaCast<HashMap>();
             Gson gson = new GsonBuilder().Create();
             string json = gson.ToJson(hashMap);
             try
@@ -205,6 +205,103 @@ namespace CookEasy.Droid
             {
                 return e.Message;
             }
+        }
+
+        public async Task<string> WriteRecipe(object recipeData, string uploadTime)
+        {
+            RecipeDetailData data = (RecipeDetailData)recipeData;
+            RecipePropData propData = new RecipePropData { 
+                RecipeTitle = data.RecipeTitle, Likes = data.Likes, ImageUri = data.ImageUri, DifficultiesAvail = data.DifficultiesAvail,
+            Difficulty = data.Difficulty, RecipeId = uploadTime};
+
+            DatabaseReference database = FirebaseDatabase.Instance.Reference;
+
+            string json = JsonConvert.SerializeObject(data);
+            Gson gson = new GsonBuilder().Create();
+            HashMap hashMap = gson.FromJson(json, Java.Lang.Class.FromType(typeof(HashMap))).JavaCast<HashMap>();
+
+            string json2 = JsonConvert.SerializeObject(propData);
+            Gson gson2 = new GsonBuilder().Create();
+            HashMap hashMap2 = gson2.FromJson(json2, Java.Lang.Class.FromType(typeof(HashMap))).JavaCast<HashMap>();
+
+            try
+            {
+                await database.Child("recipes").Child(uploadTime).SetValueAsync(hashMap);
+                await database.Child("recipeProps").Child(uploadTime).SetValueAsync(hashMap2);
+                return "True";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public async Task<object> ReadRecipeProp(int limit)
+        {
+            DatabaseReference database = FirebaseDatabase.Instance.Reference;
+
+            var data = (DataSnapshot)await database.Child("recipeProps").OrderByChild("Likes").LimitToFirst(limit).Get();
+            var list = data.Children;
+            int count = (int)data.ChildrenCount;
+
+            System.Collections.Generic.List<RecipePropData> recipePropDatas = new System.Collections.Generic.List<RecipePropData>();
+
+            for (IIterator iterator = list.Iterator(); iterator.HasNext;)
+            {
+                DataSnapshot lastDataSnapshot = (DataSnapshot)iterator.Next();
+
+                HashMap hashMap = lastDataSnapshot.Value.JavaCast<HashMap>();
+                Gson gson = new GsonBuilder().Create();
+                string json = gson.ToJson(hashMap);
+                recipePropDatas.Add(JsonConvert.DeserializeObject<RecipePropData>(json));
+            }
+
+            try
+            {
+                return recipePropDatas;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public async Task<object> ReadRecipeProp(string queryText, int limit)
+        {
+            DatabaseReference database = FirebaseDatabase.Instance.Reference;
+
+            var data = (DataSnapshot)await database.Child("recipeProps")
+                .OrderByChild("RecipeTitle")
+                .StartAt(queryText)
+                .EndAt(queryText + "\uf8ff")
+                .LimitToFirst(limit).Get();
+            var list = data.Children;
+
+            System.Collections.Generic.List<RecipePropData> recipePropDatas = new System.Collections.Generic.List<RecipePropData>();
+
+            for (IIterator iterator = list.Iterator(); iterator.HasNext;)
+            {
+                DataSnapshot lastDataSnapshot = (DataSnapshot)iterator.Next();
+
+                HashMap hashMap = lastDataSnapshot.Value.JavaCast<HashMap>();
+                Gson gson = new GsonBuilder().Create();
+                string json = gson.ToJson(hashMap);
+                recipePropDatas.Add(JsonConvert.DeserializeObject<RecipePropData>(json));
+            }
+
+            try
+            {
+                return recipePropDatas;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public string GetEmail()
+        {
+            return mAuth.CurrentUser.Email;
         }
     }
 }

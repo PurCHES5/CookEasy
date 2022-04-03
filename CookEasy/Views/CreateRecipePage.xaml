@@ -48,7 +48,8 @@
                     </yummy:PancakeView.Shadow>
                     <Entry 
                         Placeholder="Title: Sponge cake"
-                        Margin="10,0"/>
+                        Margin="10,0"
+                        Text="{Binding RecipeTitle}"/>
                 </yummy:PancakeView>
 
                 <Grid HeightRequest="50" ColumnSpacing="0" RowSpacing="0">
@@ -111,7 +112,8 @@
                     </yummy:PancakeView.Shadow>
                     <Entry 
                         Placeholder="Cook Time: 1 hr 10 mins"
-                        Margin="10,0"/>
+                        Margin="10,0"
+                        Text="{Binding CookTime}"/>
                 </yummy:PancakeView>
 
                 <yummy:PancakeView
@@ -125,7 +127,8 @@
                     </yummy:PancakeView.Shadow>
                     <Entry 
                         Placeholder="Portion: 2 people"
-                        Margin="10,0"/>
+                        Margin="10,0"
+                        Text="{Binding Portion}"/>
                 </yummy:PancakeView>
 
                 <Label

@@ -35,6 +35,7 @@ namespace CookEasy.ViewModels
             StepAdd = new Command(AddSteps);
             StepDelete = new MvvmHelpers.Commands.Command<int>(DeleteStep);
             UploadImage = new Command(ChooseRecipePhoto);
+            PublishButtonClicked = new Command(PublishContent);
 
             MainIngredients = new ObservableCollection<RecipeIngre>();
             OtherIngredients = new ObservableCollection<RecipeIngre>();
@@ -61,6 +62,11 @@ namespace CookEasy.ViewModels
         public Command StepAdd { get; }
         public MvvmHelpers.Commands.Command<int> StepDelete { get; }
 
+        private string uploadTime;
+        private string recipePhotoResult;
+        public string RecipeTitle { get; set; }
+        public string CookTime { get; set; }
+        public string Portion { get; set; }
         private ImageSource recipeImage;
         public ImageSource RecipeImage { 
             get => recipeImage; 
@@ -260,7 +266,8 @@ namespace CookEasy.ViewModels
                 return;
             }, "Cancel", true, MaskType.Gradient);
 
-            string result = await FirebaseManager.Current.UploadToStorage(file, "recipe");
+            uploadTime = DateTime.UtcNow.Ticks.ToString();
+            string result = await FirebaseManager.Current.UploadToStorage(file, "recipe", uploadTime);
 
             loadingDialog.Hide();
 
@@ -268,12 +275,79 @@ namespace CookEasy.ViewModels
             {
                 await UserDialogs.Instance.AlertAsync(result, "Error in uploading recipe photo", "OK");
                 RecipeImage = "upload_image.png";       // reset the image in case the user thought they already uploaded the photo
+                uploadTime = null;
             }
             else
             {
+                recipePhotoResult = result;
                 // provide positive feedback
                 await UserDialogs.Instance.AlertAsync("Your recipe photo has been successfully uploaded to cloud!", "Upload Image", "Great!");
             }
+        }
+
+        private async void PublishContent()
+        {
+            if (RecipeTitle == null || CookTime == null || Portion == null || recipePhotoResult == null)
+            {
+                await UserDialogs.Instance.AlertAsync("Missing Field(s)", "Error in uploading data", "Try again");
+                return;
+            }
+            RecipeDetailData data = new RecipeDetailData();
+            data.RecipeTitle = RecipeTitle;
+            data.CookTime = CookTime;
+            data.Portion = Portion;
+            data.Difficulty = Difficulty;
+            data.DifficultiesAvail = 2;
+            data.ImageUri = recipePhotoResult;
+            Random random = new Random();
+            data.Likes = random.Next(0, 1000);
+
+            List<string> mainIngre = new List<string>();
+            foreach (var ing in MainIngredients)
+            {
+                if (ing.Content != null)
+                    mainIngre.Add(ing.Content);
+            }
+            if (mainIngre.Count < 1)
+            {
+                await UserDialogs.Instance.AlertAsync("Missing Main Ingredient(s)", "Error in uploading data", "Try again");
+                return;
+            }
+            data.MainIngre = String.Join("/", mainIngre.ToArray());
+
+            List<string> otherIngre = new List<string>();
+            foreach (var ing in OtherIngredients)
+            {
+                if (ing.Content != null)
+                    otherIngre.Add(ing.Content);
+            }
+            if (otherIngre.Count < 1)
+            {
+                otherIngre.Add("None");
+            }
+            data.OtherIngre = String.Join("/", otherIngre.ToArray());
+
+            List<string> steps = new List<string>();
+            foreach (var step in Steps)
+            {
+                if (step.Content != null)
+                    steps.Add(step.Content);
+            }
+            if (steps.Count < 1)
+            {
+                await UserDialogs.Instance.AlertAsync("Missing Step(s)", "Error in uploading data", "Try again");
+                return;
+            }
+            data.Steps = String.Join("/", steps.ToArray());
+
+            string result = await FirebaseManager.Current.WriteRecipe(data, uploadTime);
+
+            if (result == "True")
+            {
+                await UserDialogs.Instance.AlertAsync("Your recipe has been successfully published!", "Congratulations!", "Great!");
+            }
+            else
+                await UserDialogs.Instance.AlertAsync(result, "Error in uploading data", "OK");
         }
 
     }

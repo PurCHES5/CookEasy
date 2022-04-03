@@ -11,6 +11,7 @@ using MvvmHelpers.Commands;
 using CookEasy.Models;
 using System.Collections.ObjectModel;
 using Acr.UserDialogs;
+using CookEasy.Services;
 
 namespace CookEasy.ViewModels
 {
@@ -37,9 +38,9 @@ namespace CookEasy.ViewModels
             LoadMoreCommand = new Command(LoadMoreRecipeRecomms);
 
             LoadMoreRecipeRecomms();
-            LoadCategoryRecomms(CategoryRecommsA);
-            LoadCategoryRecomms(CategoryRecommsB);
-            LoadCategoryRecomms(CategoryRecommsC);
+            LoadCategoryRecomms(CategoryRecommsA, "Bake");
+            LoadCategoryRecomms(CategoryRecommsB, "Asian");
+            LoadCategoryRecomms(CategoryRecommsC, "Easy");
         }
 
         public INavigation Navigation { get; set; }
@@ -74,32 +75,59 @@ namespace CookEasy.ViewModels
             CategoryRecommsB.Clear();
             CategoryRecommsC.Clear();
             LoadMoreRecipeRecomms();
-            LoadCategoryRecomms(CategoryRecommsA);
-            LoadCategoryRecomms(CategoryRecommsB);
-            LoadCategoryRecomms(CategoryRecommsC);
+            LoadCategoryRecomms(CategoryRecommsA, "Bake");
+            LoadCategoryRecomms(CategoryRecommsB, "Asian");
+            LoadCategoryRecomms(CategoryRecommsC, "Easy");
 
             IsBusy = false;
         }
 
-        void LoadMoreRecipeRecomms()
+        async void LoadMoreRecipeRecomms()
         {
             if (RecipeRecomms.Count >= 8)
                 return;
 
-            var image = "TestRecipeImage.jpeg";
-            RecipeRecomms.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, CardColor = RandomColorPicker() });
-            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, CardColor = RandomColorPicker() });
-            RecipeRecomms.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2,  CardColor = RandomColorPicker() });
-            RecipeRecomms.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image, Difficulty = 1, DifficultiesAvail = 1, CardColor = RandomColorPicker() });
+            var result = await FirebaseManager.Current.ReadRecipeProps(RecipeRecomms.Count + 4);
+
+            try
+            {
+                List<RecipePropData> datas = (List<RecipePropData>)result;
+
+                if (((List<RecipePropData>)result).Count == 8)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        datas.RemoveRange(0, 4);
+                    }
+                }
+
+                foreach (var data in datas)
+                {
+                    RecipeRecomms.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId, CardColor = RandomColorPicker() });
+                }
+            }
+            catch
+            {
+                return;
+            }
         }
 
-        void LoadCategoryRecomms(ObservableCollection<RecipeProp> collection)
+        async void LoadCategoryRecomms(ObservableCollection<RecipeProp> collection, string queryText)
         {
-            var image = "TestRecipeImage.jpeg";
-            collection.Add(new RecipeProp { Name = "Sip of Sunshine", Image = image, Difficulty = 1, DifficultiesAvail = 2, Likes = 129 });
-            collection.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 0, Likes = 82 });
-            collection.Add(new RecipeProp { Name = "Potent Potable", Image = image, Difficulty = 0, DifficultiesAvail = 2, Likes = 14 });
-            collection.Add(new RecipeProp { Name = "Kenya Kiambu Handege", Image = image, Difficulty = 1, DifficultiesAvail = 1 });
+            var result = await FirebaseManager.Current.ReadRecipeProps(queryText, 4);
+
+            try
+            {
+                List<RecipePropData> datas = (List<RecipePropData>)result;
+                foreach (var data in datas)
+                {
+                    collection.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId, CardColor = RandomColorPicker() });
+                }
+            }
+            catch
+            {
+                return;
+            }
         }
 
         string RandomColorPicker()

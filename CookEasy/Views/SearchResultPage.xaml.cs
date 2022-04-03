@@ -16,6 +16,7 @@ namespace CookEasy.Views
     {
         public SearchResultPage(string query)
         {
+            SearchResultPageViewModel.queryText = query;
             InitializeComponent();
             BindingContext = new SearchResultPageViewModel(Navigation);
             result_Label.Text = $"Results for \"{query}\"";
@@ -41,18 +42,16 @@ namespace CookEasy.Views
         private void Button_Clicked(object sender, EventArgs e)
         {
             RecipeProp recipeProp = new RecipeProp { Name = "Garlic bread" };
-            Navigation.PushAsync(new RecipePage(recipeProp));
+            Navigation.PushAsync(new RecipePage(recipeProp.RecipeId));
         }
 
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var recipe = e.CurrentSelection.FirstOrDefault() as RecipeProp;
-            if (recipe == null)
+            var recipeId = (e.CurrentSelection.FirstOrDefault() as RecipeProp).RecipeId;
+            if (recipeId == null)
                 return;
 
-            await Navigation.PushAsync(new RecipePage(recipe));
-
-            ((CollectionView)sender).SelectedItem = null;
+            await Navigation.PushAsync(new RecipePage(recipeId));
         }
 
         protected override bool OnBackButtonPressed()

@@ -46,7 +46,7 @@
                                     <yummy:PancakeView BackgroundColor="#c9eff5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                         <Image Source="ic_perm_identity_24px.png" Aspect="AspectFit" Margin="8"/>
                                     </yummy:PancakeView>
-                                    <Entry Placeholder="Username" 
+                                    <Entry Placeholder="Email" 
                                            TextColor="Black" 
                                            FontAttributes="None" 
                                            HorizontalOptions="FillAndExpand" 
