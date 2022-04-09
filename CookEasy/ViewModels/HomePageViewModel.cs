@@ -36,6 +36,9 @@ namespace CookEasy.ViewModels
             GoToRecipe = new Command(OnGoToRecipe);
             RefreshCommand = new AsyncCommand(Refresh);
             LoadMoreCommand = new Command(LoadMoreRecipeRecomms);
+            BakedMore = new Command(OnBakedMore);
+            AsianMore = new Command(OnAsianMore);
+            EasyMore = new Command(OnEasyMore);
 
             LoadMoreRecipeRecomms();
             LoadCategoryRecomms(CategoryRecommsA, "Bake");
@@ -50,6 +53,9 @@ namespace CookEasy.ViewModels
 
         public Command LoadMoreCommand { get; }
         public Command ClearCommand { get; }
+        public Command BakedMore { get; }
+        public Command AsianMore { get; }
+        public Command EasyMore { get; }
         
         /// <summary>
         /// a set of colors to be randomly assigned to the top recommendation cards
@@ -91,14 +97,14 @@ namespace CookEasy.ViewModels
 
             try
             {
+                if (RecipeRecomms.Count >= 8)
+                    return;
+
                 List<RecipePropData> datas = (List<RecipePropData>)result;
 
                 if (((List<RecipePropData>)result).Count == 8)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        datas.RemoveRange(0, 4);
-                    }
+                     datas.RemoveRange(0, 4);
                 }
 
                 foreach (var data in datas)
@@ -121,7 +127,7 @@ namespace CookEasy.ViewModels
                 List<RecipePropData> datas = (List<RecipePropData>)result;
                 foreach (var data in datas)
                 {
-                    collection.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId, CardColor = RandomColorPicker() });
+                    collection.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId, Likes = data.Likes });
                 }
             }
             catch
@@ -134,6 +140,21 @@ namespace CookEasy.ViewModels
         {
             Random random = new Random();
             return cardColors[random.Next(0, cardColors.Length)];
+        }
+
+        void OnBakedMore()
+        {
+            Navigation.PushAsync(new SearchResultPage("Baked"));
+        }
+
+        void OnAsianMore()
+        {
+            Navigation.PushAsync(new SearchResultPage("Asian"));
+        }
+
+        void OnEasyMore()
+        {
+            Navigation.PushAsync(new SearchResultPage("Easy"));
         }
     }
 }

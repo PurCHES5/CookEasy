@@ -107,22 +107,12 @@
                 </Label>
 
                 <Label 
-                    Text="User Agreement" 
-                    TextColor="Black" 
-                    FontSize="20"
-                    Margin="25,0,0,0">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </Label.GestureRecognizers>
-                </Label>
-
-                <Label 
                     Text="Terms of Service" 
                     TextColor="Black" 
                     FontSize="20"
                     Margin="25,0,0,0">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Tapped="Term_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
 
@@ -142,7 +132,7 @@
                     FontSize="20"
                     Margin="25,0,0,0">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Tapped="ContactUs_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
 
@@ -152,7 +142,7 @@
                     FontSize="20"
                     Margin="25,0,0,0">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Tapped="AboutUs_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
 

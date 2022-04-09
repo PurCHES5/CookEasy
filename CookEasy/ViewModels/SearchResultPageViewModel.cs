@@ -84,7 +84,7 @@ namespace CookEasy.ViewModels
 
                 foreach (var data in datas)
                 {
-                    RecipeRusult.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId });
+                    RecipeRusult.Add(new RecipeProp { Name = data.RecipeTitle, Image = data.ImageUri, Difficulty = data.Difficulty, DifficultiesAvail = data.DifficultiesAvail, RecipeId = data.RecipeId, Likes = data.Likes });
                 }
             }
             catch

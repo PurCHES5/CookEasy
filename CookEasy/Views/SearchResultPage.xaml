@@ -51,7 +51,7 @@
                             RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
                         <CollectionView.EmptyView>
                             <StackLayout Padding="12">
-                                <Label HorizontalOptions="Center" Text="No coffee" />
+                                <Label HorizontalOptions="Center" Text="No recipes" />
                             </StackLayout>
                         </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>

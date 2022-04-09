@@ -116,7 +116,22 @@ namespace CookEasy.Views
 
         private async void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
-            await Browser.OpenAsync("https://www.termsfeed.com/blog/privacy-policies-vs-terms-conditions/", BrowserLaunchMode.SystemPreferred);
+            await Browser.OpenAsync("https://cookeasy-ad909.web.app/privacy.html", BrowserLaunchMode.SystemPreferred);
+        }
+
+        private async void Term_Tapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://cookeasy-ad909.web.app/Term.html", BrowserLaunchMode.SystemPreferred);
+        }
+
+        private async void AboutUs_Tapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://cookeasy-ad909.web.app/About.html", BrowserLaunchMode.SystemPreferred);
+        }
+
+        private async void ContactUs_Tapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://cookeasy-ad909.web.app/Contact.html", BrowserLaunchMode.SystemPreferred);
         }
     }
 }
